@@ -36,28 +36,61 @@ const { class: className = '' } = Astro.props;
       <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(0,0,0,0.3)"/>
       </filter>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <!-- Animation definitions for arrows -->
+      <style type="text/css"><![CDATA[
+        @keyframes flowDash {
+          0% { stroke-dashoffset: 20; }
+          100% { stroke-dashoffset: 0; }
+        }
+        @keyframes pulseGlow {
+          0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 4px currentColor); }
+          50% { opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
+        }
+        @keyframes nodeEntrance {
+          0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes arrowDraw {
+          0% { stroke-dasharray: 0, 200; stroke-dashoffset: 0; }
+          50% { stroke-dasharray: 200, 0; stroke-dashoffset: 0; }
+          100% { stroke-dasharray: 200, 0; stroke-dashoffset: -200; }
+        }
+        @keyframes dataPacket {
+          0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+        }
+      ]]></style>
     </defs>
 
     <!-- Sources row -->
-    <g class="arch-node" transform="translate(60, 40)" tabindex="0" role="group" aria-label="Grafana source">
+    <g class="arch-node" transform="translate(60, 40)" tabindex="0" role="group" aria-label="Grafana source" style="animation: nodeEntrance 0.6s ease-out 0.1s both;">
       <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
       <text x="70" y="28" class="node-title" fill="#8a8f98">Grafana</text>
       <text x="70" y="46" class="node-subtitle">webhook</text>
       <text x="70" y="68" class="node-label" fill="#d0d6e0">Metrics & Alerts</text>
     </g>
-    <g class="arch-node" transform="translate(60, 140)" tabindex="0" role="group" aria-label="Prometheus source">
+    <g class="arch-node" transform="translate(60, 140)" tabindex="0" role="group" aria-label="Prometheus source" style="animation: nodeEntrance 0.6s ease-out 0.2s both;">
       <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
       <text x="70" y="28" class="node-title" fill="#8a8f98">Prometheus</text>
       <text x="70" y="46" class="node-subtitle">metrics</text>
       <text x="70" y="68" class="node-label" fill="#d0d6e0">Time-Series DB</text>
     </g>
-    <g class="arch-node" transform="translate(60, 240)" tabindex="0" role="group" aria-label="Loki source">
+    <g class="arch-node" transform="translate(60, 240)" tabindex="0" role="group" aria-label="Loki source" style="animation: nodeEntrance 0.6s ease-out 0.3s both;">
       <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
       <text x="70" y="28" class="node-title" fill="#8a8f98">Loki</text>
       <text x="70" y="46" class="node-subtitle">logs</text>
       <text x="70" y="68" class="node-label" fill="#d0d6e0">Log Aggregation</text>
     </g>
-    <g class="arch-node" transform="translate(60, 340)" tabindex="0" role="group" aria-label="Generic webhook source">
+    <g class="arch-node" transform="translate(60, 340)" tabindex="0" role="group" aria-label="Generic webhook source" style="animation: nodeEntrance 0.6s ease-out 0.4s both;">
       <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
       <text x="70" y="28" class="node-title" fill="#8a8f98">Generic</text>
       <text x="70" y="46" class="node-subtitle">webhook</text>
@@ -65,13 +98,13 @@ const { class: className = '' } = Astro.props;
     </g>
 
     <!-- Arrow from sources to ingest -->
-    <path class="arch-arrow" d="M200, 80 C260, 80 300, 180 360, 180" />
-    <path class="arch-arrow" d="M200, 180 C260, 180 300, 180 360, 180" />
-    <path class="arch-arrow" d="M200, 280 C260, 280 300, 180 360, 180" />
-    <path class="arch-arrow" d="M200, 380 C260, 380 300, 180 360, 180" />
+    <path class="arch-arrow" d="M200, 80 C260, 80 300, 180 360, 180" style="stroke-dasharray: 8; animation: flowDash 1.5s linear infinite 0.5s;"/>
+    <path class="arch-arrow" d="M200, 180 C260, 180 300, 180 360, 180" style="stroke-dasharray: 8; animation: flowDash 1.5s linear infinite 0.55s;"/>
+    <path class="arch-arrow" d="M200, 280 C260, 280 300, 180 360, 180" style="stroke-dasharray: 8; animation: flowDash 1.5s linear infinite 0.6s;"/>
+    <path class="arch-arrow" d="M200, 380 C260, 380 300, 180 360, 180" style="stroke-dasharray: 8; animation: flowDash 1.5s linear infinite 0.65s;"/>
 
     <!-- Ingest API -->
-    <g class="arch-node" transform="translate(360, 140)" tabindex="0" role="group" aria-label="Ingest API service">
+    <g class="arch-node" transform="translate(360, 140)" tabindex="0" role="group" aria-label="Ingest API service" style="animation: nodeEntrance 0.6s ease-out 0.5s both;">
       <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradIngest)" stroke="#7170ff" stroke-width="2" filter="url(#shadow)"/>
       <text x="90" y="32" class="node-title" fill="#7170ff">Ingest API</text>
       <text x="90" y="52" class="node-subtitle">Go Service</text>
@@ -80,10 +113,10 @@ const { class: className = '' } = Astro.props;
     </g>
 
     <!-- Arrow to DB -->
-    <path class="arch-arrow" d="M540, 200 C570, 200 600, 200 630, 200" />
+    <path class="arch-arrow" d="M540, 200 C570, 200 600, 200 630, 200" style="stroke-dasharray: 8; animation: flowDash 1.5s linear infinite 0.7s;"/>
 
     <!-- PostgreSQL -->
-    <g class="arch-node" transform="translate(630, 140)" tabindex="0" role="group" aria-label="PostgreSQL evidence store">
+    <g class="arch-node" transform="translate(630, 140)" tabindex="0" role="group" aria-label="PostgreSQL evidence store" style="animation: nodeEntrance 0.6s ease-out 0.6s both;">
       <rect x="0" y="0" width="160" height="120" rx="16" fill="url(#gradDB)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
       <!-- Database cylinder icon -->
       <ellipse cx="80" cy="20" rx="50" ry="12" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
@@ -97,10 +130,10 @@ const { class: className = '' } = Astro.props;
     </g>
 
     <!-- Arrow to Correlator -->
-    <path class="arch-arrow" d="M790, 200 C820, 200 850, 200 880, 200" />
+    <path class="arch-arrow" d="M790, 200 C820, 200 850, 200 880, 200" style="stroke-dasharray: 8; animation: flowDash 1.5s linear infinite 0.8s;"/>
 
     <!-- Correlator -->
-    <g class="arch-node" transform="translate(880, 140)" tabindex="0" role="group" aria-label="Correlator service">
+    <g class="arch-node" transform="translate(880, 140)" tabindex="0" role="group" aria-label="Correlator service" style="animation: nodeEntrance 0.6s ease-out 0.7s both;">
       <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradIngest)" stroke="#7170ff" stroke-width="2" filter="url(#shadow)"/>
       <text x="90" y="32" class="node-title" fill="#7170ff">Correlator</text>
       <text x="90" y="52" class="node-subtitle">Go Service</text>
@@ -109,10 +142,10 @@ const { class: className = '' } = Astro.props;
     </g>
 
     <!-- Arrow to Investigator -->
-    <path class="arch-arrow" d="M1060, 200 C1090, 200 1120, 200 1150, 200" />
+    <path class="arch-arrow" d="M1060, 200 C1090, 200 1120, 200 1150, 200" style="stroke-dasharray: 8; animation: flowDash 1.5s linear infinite 0.9s;"/>
 
     <!-- Investigator -->
-    <g class="arch-node" transform="translate(1150, 140)" tabindex="0" role="group" aria-label="Investigator service">
+    <g class="arch-node" transform="translate(1150, 140)" tabindex="0" role="group" aria-label="Investigator service" style="animation: nodeEntrance 0.6s ease-out 0.8s both;">
       <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradInvestigator)" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
       <text x="90" y="28" class="node-title" fill="#f59e0b">Investigator</text>
       <text x="90" y="48" class="node-subtitle">Python LLM Agent</text>
@@ -123,10 +156,10 @@ const { class: className = '' } = Astro.props;
     </g>
 
     <!-- Arrow to Delivery -->
-    <path class="arch-arrow" d="M1330, 200 C1360, 200 1390, 200 1420, 200" />
+    <path class="arch-arrow" d="M1330, 200 C1360, 200 1390, 200 1420, 200" style="stroke-dasharray: 8; animation: flowDash 1.5s linear infinite 1s;"/>
 
     <!-- Delivery -->
-    <g class="arch-node" transform="translate(1420, 140)" tabindex="0" role="group" aria-label="Delivery service">
+    <g class="arch-node" transform="translate(1420, 140)" tabindex="0" role="group" aria-label="Delivery service" style="animation: nodeEntrance 0.6s ease-out 0.9s both;">
       <rect x="0" y="0" width="160" height="120" rx="16" fill="url(#gradDelivery)" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
       <text x="80" y="32" class="node-title" fill="#10b981">Delivery</text>
       <text x="80" y="52" class="node-subtitle">Go Service</text>
@@ -135,11 +168,28 @@ const { class: className = '' } = Astro.props;
     </g>
 
     <!-- Flow labels -->
-    <text x="280" y="70" class="arch-flow-label">Webhooks</text>
-    <text x="450" y="130" class="arch-flow-label">Normalize</text>
-    <text x="710" y="130" class="arch-flow-label">Persist</text>
-    <text x="970" y="130" class="arch-flow-label">Correlate</text>
-    <text x="1240" y="130" class="arch-flow-label">Investigate</text>
-    <text x="1500" y="130" class="arch-flow-label">Deliver</text>
+    <text x="280" y="70" class="arch-flow-label" style="animation: nodeEntrance 0.6s ease-out 0.5s both;">Webhooks</text>
+    <text x="450" y="130" class="arch-flow-label" style="animation: nodeEntrance 0.6s ease-out 0.6s both;">Normalize</text>
+    <text x="710" y="130" class="arch-flow-label" style="animation: nodeEntrance 0.6s ease-out 0.7s both;">Persist</text>
+    <text x="970" y="130" class="arch-flow-label" style="animation: nodeEntrance 0.6s ease-out 0.8s both;">Correlate</text>
+    <text x="1240" y="130" class="arch-flow-label" style="animation: nodeEntrance 0.6s ease-out 0.9s both;">Investigate</text>
+    <text x="1500" y="130" class="arch-flow-label" style="animation: nodeEntrance 0.6s ease-out 1s both;">Deliver</text>
+
+    <!-- Animated data packets flowing along arrows -->
+    <circle class="data-packet" r="5" fill="#7170ff" opacity="0.8" filter="url(#glow)">
+      <animateMotion dur="3s" repeatCount="indefinite" path="M200, 80 C260, 80 300, 180 360, 180" begin="0.5s"/>
+    </circle>
+    <circle class="data-packet" r="5" fill="#3b82f6" opacity="0.8" filter="url(#glow)">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M540, 200 C570, 200 600, 200 630, 200" begin="1s"/>
+    </circle>
+    <circle class="data-packet" r="5" fill="#7170ff" opacity="0.8" filter="url(#glow)">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M790, 200 C820, 200 850, 200 880, 200" begin="1.5s"/>
+    </circle>
+    <circle class="data-packet" r="5" fill="#f59e0b" opacity="0.8" filter="url(#glow)">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M1060, 200 C1090, 200 1120, 200 1150, 200" begin="2s"/>
+    </circle>
+    <circle class="data-packet" r="5" fill="#10b981" opacity="0.8" filter="url(#glow)">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M1330, 200 C1360, 200 1390, 200 1420, 200" begin="2.5s"/>
+    </circle>
   </svg>
 </div>
