@@ -568,12 +568,64 @@ section {
   background: var(--arch-shell);
   border: 1px solid var(--arch-shell-border);
   border-radius: var(--radius-md);
-  padding: 20px;
+  padding: 0;
   color: var(--arch-text);
   font-family: var(--font-mono);
   font-size: 0.84rem;
   line-height: 1.65;
   box-shadow: var(--shadow-strong);
+}
+
+.demo-report-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid color-mix(in oklab, var(--arch-shell-border) 70%, transparent);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--arch-shell-border) 38%, transparent) 0%, transparent 100%);
+}
+
+.demo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #5e739d;
+}
+
+.demo-dot:nth-child(1) { background: #f08b78; }
+.demo-dot:nth-child(2) { background: #efc06b; }
+.demo-dot:nth-child(3) { background: #67cdb8; }
+
+.demo-title {
+  margin-left: 6px;
+  color: #9eb3d8;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.demo-line {
+  padding: 0 18px;
+  margin-top: 12px;
+}
+
+.demo-line strong {
+  color: #f1f6ff;
+  font-weight: 600;
+}
+
+.demo-actions {
+  margin: 8px 18px 0 34px;
+  color: #d7e5ff;
+}
+
+.demo-actions li + li {
+  margin-top: 4px;
+}
+
+.demo-actions + .demo-line {
+  margin-top: 12px;
+  padding-bottom: 16px;
 }
 
 .evidence-types {
@@ -601,6 +653,10 @@ section {
   background: color-mix(in oklab, var(--bg-strong) 86%, transparent);
   padding: 16px;
   text-align: center;
+  min-height: 94px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .evidence-card.fact { border-color: color-mix(in oklab, var(--accent-teal) 40%, var(--border)); }
@@ -619,6 +675,12 @@ section {
 .evidence-card.hypothesis .evidence-type { color: #4d6fbb; }
 .evidence-card.unknown .evidence-type { color: var(--text-muted); }
 .evidence-desc { font-size: 0.84rem; color: var(--text-soft); }
+
+@media (min-width: 1024px) {
+  .evidence-wide {
+    grid-column: 1 / -1;
+  }
+}
 
 .quick-start {
   background: color-mix(in oklab, var(--bg-accent) 70%, var(--bg));

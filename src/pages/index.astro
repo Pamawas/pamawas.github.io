@@ -168,8 +168,23 @@ import ArchitectureDiagram from '../components/ArchitectureDiagram.astro';
         <h2 id="demo-title" class="heading-1">Sample Morning Digest</h2>
         <p class="body">What you actually receive - concise, evidence-based, uncertainty-aware</p>
       </header>
-      <div class="demo-report" role="img" aria-label="Sample morning digest report">
-🌅 Good morning. Infrastructure was 99.97% healthy overnight. 3 incidents occurred. 1 needs your attention. 2 recovered automatically. Most likely root cause: database connection exhaustion following the 01:47 deployment. Confidence: 87%. Recommended actions: 1. Review connection-pool configuration. 2. Compare the deployment's DB connection behavior. 3. Add early-warning monitoring. No critical outage occurred.
+      <div class="demo-report" role="region" aria-label="Sample morning digest report">
+        <div class="demo-report-head" aria-hidden="true">
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-title">pamawas morning-digest.txt</span>
+        </div>
+        <p class="demo-line">🌅 Good morning. Infrastructure was 99.97% healthy overnight.</p>
+        <p class="demo-line">3 incidents occurred. 1 needs your attention. 2 recovered automatically.</p>
+        <p class="demo-line"><strong>Most likely root cause:</strong> Database connection exhaustion following the 01:47 deployment. <strong>Confidence:</strong> 87%.</p>
+        <p class="demo-line"><strong>Recommended actions:</strong></p>
+        <ol class="demo-actions">
+          <li>Review connection-pool configuration.</li>
+          <li>Compare the deployment's DB connection behavior.</li>
+          <li>Add early-warning monitoring.</li>
+        </ol>
+        <p class="demo-line">No critical outage occurred.</p>
       </div>
       <div class="evidence-types" role="list" aria-label="Evidence types">
         <article class="evidence-card fact" role="listitem">
@@ -184,7 +199,7 @@ import ArchitectureDiagram from '../components/ArchitectureDiagram.astro';
           <div class="evidence-type">HYPOTHESIS</div>
           <p class="evidence-desc">Plausible, unverified</p>
         </article>
-        <article class="evidence-card unknown" role="listitem" style="grid-column: span 4;">
+        <article class="evidence-card unknown evidence-wide" role="listitem">
           <div class="evidence-type">UNKNOWN</div>
           <p class="evidence-desc">Insufficient evidence - stated explicitly rather than guessed</p>
         </article>
