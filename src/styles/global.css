@@ -201,6 +201,14 @@ section {
   margin-bottom: 10px;
 }
 
+.arch-section-header {
+  padding-top: 24px;
+}
+
+.arch-subtitle {
+  margin-bottom: 8px;
+}
+
 .nav {
   position: sticky;
   top: 0;
@@ -416,10 +424,11 @@ section {
   box-shadow: var(--shadow-strong);
 }
 
-.arch-diagram svg {
-  width: max(100%, 1520px);
-  min-width: 1520px;
-  max-width: none;
+.arch-svg {
+  width: 100%;
+  height: auto;
+  max-width: 1620px;
+  min-width: 0;
   display: block;
 }
 
@@ -649,7 +658,7 @@ section {
 
 .evidence-card {
   border-radius: var(--radius-md);
-  border: 1px solid var(--border);
+  border: 2px solid;
   background: color-mix(in oklab, var(--bg-strong) 86%, transparent);
   padding: 16px;
   text-align: center;
@@ -659,9 +668,10 @@ section {
   justify-content: center;
 }
 
-.evidence-card.fact { border-color: color-mix(in oklab, var(--accent-teal) 40%, var(--border)); }
-.evidence-card.likely { border-color: color-mix(in oklab, var(--accent) 42%, var(--border)); }
+.evidence-card.fact { border-color: var(--accent-teal); }
+.evidence-card.likely { border-color: var(--accent); }
 .evidence-card.hypothesis { border-color: #4669b1; }
+.evidence-card.unknown { border-color: var(--text-muted); }
 
 .evidence-type {
   font-size: 0.95rem;
@@ -675,12 +685,6 @@ section {
 .evidence-card.hypothesis .evidence-type { color: #4d6fbb; }
 .evidence-card.unknown .evidence-type { color: var(--text-muted); }
 .evidence-desc { font-size: 0.84rem; color: var(--text-soft); }
-
-@media (min-width: 1024px) {
-  .evidence-wide {
-    grid-column: 1 / -1;
-  }
-}
 
 .quick-start {
   background: color-mix(in oklab, var(--bg-accent) 70%, var(--bg));
@@ -867,9 +871,9 @@ footer {
   section { padding: 66px 0; }
   .hero { min-height: auto; padding-top: 84px; padding-bottom: 74px; }
   .arch-diagram { padding: 14px; }
-  .arch-diagram svg {
-    width: 1320px;
-    min-width: 1320px;
+  .arch-svg {
+    width: 100%;
+    min-width: 0;
   }
 }
 

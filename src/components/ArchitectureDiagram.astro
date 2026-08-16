@@ -6,7 +6,7 @@ const { class: className = '' } = Astro.props;
 ---
 
 <div class={`arch-diagram ${className}`} role="img" aria-label="Architecture diagram showing data flow from webhooks through ingest, correlation, investigation, to delivery">
-  <svg viewBox="0 0 1620 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 1620 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" class="arch-svg">
     <title>Pamawas system architecture</title>
     <desc>Data flows from alert sources into ingest, then PostgreSQL, correlator, investigator, and final delivery channels.</desc>
     <defs>
