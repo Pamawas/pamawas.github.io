@@ -6,7 +6,9 @@ const { class: className = '' } = Astro.props;
 ---
 
 <div class={`arch-diagram ${className}`} role="img" aria-label="Architecture diagram showing data flow from webhooks through ingest, correlation, investigation, to delivery">
-  <svg viewBox="0 0 1500 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 1620 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <title>Pamawas system architecture</title>
+    <desc>Data flows from alert sources into ingest, then PostgreSQL, correlator, investigator, and final delivery channels.</desc>
     <defs>
       <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
         <path d="M0,0 L10,3.5 L0,7 Z" fill="#23252a"/>
@@ -37,25 +39,25 @@ const { class: className = '' } = Astro.props;
     </defs>
 
     <!-- Sources row -->
-    <g class="arch-node" transform="translate(60, 40)">
+    <g class="arch-node" transform="translate(60, 40)" tabindex="0" role="group" aria-label="Grafana source">
       <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
       <text x="70" y="28" class="node-title" fill="#8a8f98">Grafana</text>
       <text x="70" y="46" class="node-subtitle">webhook</text>
       <text x="70" y="68" class="node-label" fill="#d0d6e0">Metrics & Alerts</text>
     </g>
-    <g class="arch-node" transform="translate(60, 140)">
+    <g class="arch-node" transform="translate(60, 140)" tabindex="0" role="group" aria-label="Prometheus source">
       <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
       <text x="70" y="28" class="node-title" fill="#8a8f98">Prometheus</text>
       <text x="70" y="46" class="node-subtitle">metrics</text>
       <text x="70" y="68" class="node-label" fill="#d0d6e0">Time-Series DB</text>
     </g>
-    <g class="arch-node" transform="translate(60, 240)">
+    <g class="arch-node" transform="translate(60, 240)" tabindex="0" role="group" aria-label="Loki source">
       <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
       <text x="70" y="28" class="node-title" fill="#8a8f98">Loki</text>
       <text x="70" y="46" class="node-subtitle">logs</text>
       <text x="70" y="68" class="node-label" fill="#d0d6e0">Log Aggregation</text>
     </g>
-    <g class="arch-node" transform="translate(60, 340)">
+    <g class="arch-node" transform="translate(60, 340)" tabindex="0" role="group" aria-label="Generic webhook source">
       <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
       <text x="70" y="28" class="node-title" fill="#8a8f98">Generic</text>
       <text x="70" y="46" class="node-subtitle">webhook</text>
@@ -69,7 +71,7 @@ const { class: className = '' } = Astro.props;
     <path class="arch-arrow" d="M200, 380 C260, 380 300, 180 360, 180" />
 
     <!-- Ingest API -->
-    <g class="arch-node" transform="translate(360, 140)">
+    <g class="arch-node" transform="translate(360, 140)" tabindex="0" role="group" aria-label="Ingest API service">
       <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradIngest)" stroke="#7170ff" stroke-width="2" filter="url(#shadow)"/>
       <text x="90" y="32" class="node-title" fill="#7170ff">Ingest API</text>
       <text x="90" y="52" class="node-subtitle">Go Service</text>
@@ -81,7 +83,7 @@ const { class: className = '' } = Astro.props;
     <path class="arch-arrow" d="M540, 200 C570, 200 600, 200 630, 200" />
 
     <!-- PostgreSQL -->
-    <g class="arch-node" transform="translate(630, 140)">
+    <g class="arch-node" transform="translate(630, 140)" tabindex="0" role="group" aria-label="PostgreSQL evidence store">
       <rect x="0" y="0" width="160" height="120" rx="16" fill="url(#gradDB)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
       <!-- Database cylinder icon -->
       <ellipse cx="80" cy="20" rx="50" ry="12" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
@@ -98,7 +100,7 @@ const { class: className = '' } = Astro.props;
     <path class="arch-arrow" d="M790, 200 C820, 200 850, 200 880, 200" />
 
     <!-- Correlator -->
-    <g class="arch-node" transform="translate(880, 140)">
+    <g class="arch-node" transform="translate(880, 140)" tabindex="0" role="group" aria-label="Correlator service">
       <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradIngest)" stroke="#7170ff" stroke-width="2" filter="url(#shadow)"/>
       <text x="90" y="32" class="node-title" fill="#7170ff">Correlator</text>
       <text x="90" y="52" class="node-subtitle">Go Service</text>
@@ -110,7 +112,7 @@ const { class: className = '' } = Astro.props;
     <path class="arch-arrow" d="M1060, 200 C1090, 200 1120, 200 1150, 200" />
 
     <!-- Investigator -->
-    <g class="arch-node" transform="translate(1150, 140)">
+    <g class="arch-node" transform="translate(1150, 140)" tabindex="0" role="group" aria-label="Investigator service">
       <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradInvestigator)" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
       <text x="90" y="28" class="node-title" fill="#f59e0b">Investigator</text>
       <text x="90" y="48" class="node-subtitle">Python LLM Agent</text>
@@ -124,7 +126,7 @@ const { class: className = '' } = Astro.props;
     <path class="arch-arrow" d="M1330, 200 C1360, 200 1390, 200 1420, 200" />
 
     <!-- Delivery -->
-    <g class="arch-node" transform="translate(1420, 140)">
+    <g class="arch-node" transform="translate(1420, 140)" tabindex="0" role="group" aria-label="Delivery service">
       <rect x="0" y="0" width="160" height="120" rx="16" fill="url(#gradDelivery)" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
       <text x="80" y="32" class="node-title" fill="#10b981">Delivery</text>
       <text x="80" y="52" class="node-subtitle">Go Service</text>
