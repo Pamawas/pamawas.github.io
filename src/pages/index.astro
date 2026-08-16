@@ -131,48 +131,30 @@ import ArchitectureDiagram from '../components/ArchitectureDiagram.astro';
         <p class="body arch-subtitle">From webhook ingestion to correlated evidence, autonomous investigation, and verified morning incident digests.</p>
       </header>
       <ArchitectureDiagram />
-      <div class="component-grid" role="list" aria-label="Components">
-        <a href="https://github.com/Pamawas/pamawas-ingest" target="_blank" rel="noopener" class="comp-link" role="listitem">
-          <span class="comp-icon" aria-hidden="true">📥</span>
-          <span class="comp-lang">Go</span>
+      <div class="repo-grid" role="list" aria-label="Repository highlights">
+        <a href="https://github.com/Pamawas/pamawas-ingest" target="_blank" rel="noopener" class="repo-card" role="listitem">
+          <span class="repo-badge">Go</span>
           <h3>pamawas-ingest</h3>
-          <p class="comp-desc">Webhook ingestion & normalization</p>
+          <p>Webhook ingestion & normalization</p>
+          <span class="repo-link">View repo →</span>
         </a>
-        <a href="https://github.com/Pamawas/pamawas-correlator" target="_blank" rel="noopener" class="comp-link" role="listitem">
-          <span class="comp-icon" aria-hidden="true">🔗</span>
-          <span class="comp-lang">Go</span>
+        <a href="https://github.com/Pamawas/pamawas-correlator" target="_blank" rel="noopener" class="repo-card" role="listitem">
+          <span class="repo-badge">Go</span>
           <h3>pamawas-correlator</h3>
-          <p class="comp-desc">Deterministic event&rarr;incident correlation</p>
+          <p>Deterministic event-to-incident correlation</p>
+          <span class="repo-link">View repo →</span>
         </a>
-        <a href="https://github.com/Pamawas/pamawas-investigator" target="_blank" rel="noopener" class="comp-link" role="listitem">
-          <span class="comp-icon" aria-hidden="true">🤖</span>
-          <span class="comp-lang">Python</span>
+        <a href="https://github.com/Pamawas/pamawas-investigator" target="_blank" rel="noopener" class="repo-card" role="listitem">
+          <span class="repo-badge">Python</span>
           <h3>pamawas-investigator</h3>
-          <p class="comp-desc">LLM investigator with bounded tool access</p>
+          <p>Bounded tool-calling investigation</p>
+          <span class="repo-link">View repo →</span>
         </a>
-        <a href="https://github.com/Pamawas/pamawas-reporter" target="_blank" rel="noopener" class="comp-link" role="listitem">
-          <span class="comp-icon" aria-hidden="true">📤</span>
-          <span class="comp-lang">Go</span>
+        <a href="https://github.com/Pamawas/pamawas-reporter" target="_blank" rel="noopener" class="repo-card" role="listitem">
+          <span class="repo-badge">Go</span>
           <h3>pamawas-reporter</h3>
-          <p class="comp-desc">Delivery adapters (Discord, Telegram, Email)</p>
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-scheduler" target="_blank" rel="noopener" class="comp-link" role="listitem">
-          <span class="comp-icon" aria-hidden="true">⏰</span>
-          <span class="comp-lang">Go</span>
-          <h3>pamawas-scheduler</h3>
-          <p class="comp-desc">Daily digest cron + high-severity immediate path</p>
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-schema" target="_blank" rel="noopener" class="comp-link" role="listitem">
-          <span class="comp-icon" aria-hidden="true">🗄️</span>
-          <span class="comp-lang">Go/SQL</span>
-          <h3>pamawas-schema</h3>
-          <p class="comp-desc">Shared types, migrations, DB bootstrap</p>
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-infra" target="_blank" rel="noopener" class="comp-link" role="listitem">
-          <span class="comp-icon" aria-hidden="true">☸️</span>
-          <span class="comp-lang">YAML/Helm</span>
-          <h3>pamawas-infra</h3>
-          <p class="comp-desc">K8s manifests, ArgoCD, deployment configs</p>
+          <p>Delivery adapters for alerts and digests</p>
+          <span class="repo-link">View repo →</span>
         </a>
       </div>
     </div>
