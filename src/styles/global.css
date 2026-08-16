@@ -359,6 +359,13 @@ section {
   margin-bottom: 14px;
 }
 
+.comp-card .icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  stroke-width: 1.9;
+}
+
 .comp-card.problem {
   background: color-mix(in oklab, var(--danger) 8%, var(--bg-strong));
   border-color: color-mix(in oklab, var(--danger) 35%, var(--border));
@@ -410,9 +417,48 @@ section {
 }
 
 .arch-diagram svg {
-  width: 100%;
-  min-width: 1120px;
+  width: max(100%, 1520px);
+  min-width: 1520px;
+  max-width: none;
   display: block;
+}
+
+.node-title {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 700;
+  text-anchor: middle;
+  fill: #eef3ff;
+}
+
+.node-subtitle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-anchor: middle;
+  fill: #9fb2d7;
+}
+
+.node-label {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-anchor: middle;
+  fill: #dce6fb;
+}
+
+.node-desc {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-anchor: middle;
+  fill: #9fb2d7;
+}
+
+.arch-flow-label {
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 600;
+  text-anchor: middle;
+  fill: #9fb2d7;
 }
 
 .arch-node rect {
@@ -759,6 +805,10 @@ footer {
   section { padding: 66px 0; }
   .hero { min-height: auto; padding-top: 84px; padding-bottom: 74px; }
   .arch-diagram { padding: 14px; }
+  .arch-diagram svg {
+    width: 1320px;
+    min-width: 1320px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
