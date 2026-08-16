@@ -1,0 +1,52 @@
+---
+const principles = [
+  ['01', 'Alerts are evidence', 'Many alerts can describe one failure. Correlate by time, topology, and labels before investigation.'],
+  ['02', 'Evidence before conclusions', 'Every statement is typed as fact, likely cause, hypothesis, or unknown.'],
+  ['03', 'The model is bounded', 'The investigator receives curated context and explicit read-only tools, not unrestricted access.'],
+  ['04', 'Humans stay in control', 'Pamawas explains and recommends. It does not autonomously remediate infrastructure.'],
+];
+---
+
+<section id="trust" class="band" aria-labelledby="trust-title">
+  <div class="shell split-heading">
+    <header class="section-heading">
+      <div><span class="section-index">04</span><span class="eyebrow">Trust model</span></div>
+      <h2 id="trust-title">Designed to be useful without pretending certainty.</h2>
+    </header>
+    <p class="section-intro">Operational AI earns trust by preserving provenance, stating uncertainty, and keeping side effects out of the investigation path.</p>
+  </div>
+  <div class="shell principle-grid">
+    {principles.map(([number, title, body]) => (
+      <article class="principle-item"><span>{number}</span><h3>{title}</h3><p>{body}</p></article>
+    ))}
+  </div>
+</section>
+
+<section id="quick-start" class="band band-muted" aria-labelledby="quick-start-title">
+  <div class="shell quickstart-grid">
+    <div class="section-heading">
+      <div><span class="section-index">05</span><span class="eyebrow">Run locally</span></div>
+      <h2 id="quick-start-title">Inspect the system from source.</h2>
+      <p>Clone the components, start the local infrastructure, and apply the shared schema.</p>
+      <div class="component-links">
+        <a href="https://github.com/Pamawas/pamawas-infra" target="_blank" rel="noopener">Infrastructure ↗</a>
+        <a href="https://github.com/Pamawas/pamawas-schema" target="_blank" rel="noopener">Schema ↗</a>
+        <a href="https://github.com/Pamawas" target="_blank" rel="noopener">All repositories ↗</a>
+      </div>
+    </div>
+    <div class="terminal-block">
+      <div class="terminal-head"><span>quickstart.sh</span><button id="copy-code-btn" aria-label="Copy quick start commands"><span class="copy-text">Copy</span></button></div>
+      <pre id="quickstart-code"><code><span class="code-comment"># Clone the Pamawas repositories</span>
+<span class="code-keyword">for</span> repo <span class="code-keyword">in</span> ingest correlator investigator reporter scheduler schema infra; <span class="code-keyword">do</span>
+  git clone https://github.com/Pamawas/pamawas-<span class="code-variable">$repo</span>.git
+<span class="code-keyword">done</span>
+
+<span class="code-comment"># Start PostgreSQL and local services</span>
+docker compose -f pamawas-infra/docker-compose.local.yml up -d
+
+<span class="code-comment"># Apply the shared database schema</span>
+cd pamawas-schema && go run ./cmd/migrate</code></pre>
+      <p id="copy-status" class="sr-only" aria-live="polite"></p>
+    </div>
+  </div>
+</section>

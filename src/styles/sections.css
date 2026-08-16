@@ -1,0 +1,51 @@
+.workflow-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); }
+.workflow-step { min-height: 310px; display: flex; flex-direction: column; padding: 28px; background: var(--surface); }
+.workflow-step + .workflow-step { border-left: 1px solid var(--line); }
+.step-top { display: flex; justify-content: space-between; align-items: start; padding-bottom: 52px; }
+.step-top > span { color: var(--text-3); font-family: var(--font-mono); font-size: 12px; }
+.step-top strong { font-family: var(--font-mono); font-size: 28px; font-weight: 400; }
+.workflow-step h3 { margin: 0 0 10px; font-size: 22px; font-weight: 500; }
+.workflow-step p { margin: 0; color: var(--text-2); font-size: 15px; line-height: 1.6; }
+.step-type { align-self: flex-start; margin-top: auto; padding-top: 24px; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; }
+.step-type.deterministic { color: var(--blue); }
+.step-type.bounded { color: var(--amber); }
+
+.investigation-shell { padding: 0; background: var(--surface); border: 1px solid var(--line); }
+.investigation-tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+.investigation-tab { min-height: 56px; padding: 0 18px; border: 0; border-right: 1px solid var(--line); background: var(--surface-2); color: var(--text-2); text-align: left; cursor: pointer; }
+.investigation-tab:last-child { border-right: 0; }
+.investigation-tab span { margin-right: 14px; color: var(--text-3); font-family: var(--font-mono); font-size: 11px; }
+.investigation-tab.active { background: var(--surface); color: var(--text); box-shadow: inset 0 -2px var(--blue); }
+.investigation-content { display: grid; grid-template-columns: 240px 1fr; min-height: 510px; }
+.incident-sidebar { padding: 26px; background: var(--surface-2); border-right: 1px solid var(--line); }
+.incident-sidebar > div { display: grid; gap: 4px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.incident-sidebar > div strong { font-family: var(--font-mono); font-size: 19px; }
+.incident-sidebar dl { margin: 10px 0 0; }
+.incident-sidebar dl div { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.incident-sidebar dt { color: var(--text-3); font-size: 11px; }
+.incident-sidebar dd { margin: 3px 0 0; font-family: var(--font-mono); font-size: 12px; }
+.panel-stack { min-width: 0; }
+.investigation-panel { padding: 34px; animation: panel-in .2s ease; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(4px); } }
+.panel-head { display: flex; align-items: start; justify-content: space-between; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.panel-kicker { color: var(--blue); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; }
+.panel-head h3 { margin: 5px 0 0; font-size: 26px; font-weight: 400; }
+.panel-summary { max-width: 840px; margin: 24px 0; color: var(--text-2); font-size: 16px; line-height: 1.7; }
+.evidence-badge, .reduction, .readonly-label { display: inline-flex; min-height: 24px; align-items: center; padding: 0 8px; border-radius: 2px; font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; white-space: nowrap; }
+.evidence-badge.fact { background: var(--green-soft); color: var(--green); }
+.evidence-badge.likely { background: var(--amber-soft); color: var(--amber); }
+.evidence-badge.unknown { background: var(--surface-3); color: var(--text-2); }
+.reduction { background: var(--blue-soft); color: var(--blue); }
+.readonly-label { background: var(--green-soft); color: var(--green); }
+.finding-table { border-top: 1px solid var(--line); }
+.finding-table > div { display: grid; grid-template-columns: 90px 1fr; gap: 20px; align-items: start; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.finding-table p { margin: 1px 0 0; font-size: 14px; }
+.timeline, .trace-list { margin: 24px 0 0; padding: 0; list-style: none; }
+.timeline li { display: grid; grid-template-columns: 105px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.timeline time { color: var(--text-3); font-size: 11px; }
+.timeline strong { font-size: 13px; }
+.timeline p { margin: 3px 0 0; color: var(--text-2); font-size: 14px; }
+.trace-list li { display: grid; grid-template-columns: 34px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.trace-list li > span { color: var(--text-3); font-family: var(--font-mono); font-size: 11px; }
+.trace-list code { color: var(--blue); font-size: 12px; }
+.trace-list p { margin: 5px 0 0; color: var(--text-2); font-size: 14px; }

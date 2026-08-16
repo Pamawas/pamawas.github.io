@@ -1,0 +1,46 @@
+---
+const stages = [
+  { n: '01', name: 'Ingest', repo: 'pamawas-ingest', kind: 'Deterministic', desc: 'Normalize Grafana, Prometheus, Loki, and custom webhooks.', tone: 'blue' },
+  { n: '02', name: 'Evidence', repo: 'pamawas-schema', kind: 'Persistent', desc: 'Store raw events, normalized facts, and the audit history.', tone: 'blue' },
+  { n: '03', name: 'Correlate', repo: 'pamawas-correlator', kind: 'Deterministic', desc: 'Group by time window, service topology, and shared labels.', tone: 'blue' },
+  { n: '04', name: 'Investigate', repo: 'pamawas-investigator', kind: 'Bounded AI', desc: 'Query PromQL, LogQL, Kubernetes, and deployment evidence.', tone: 'amber' },
+  { n: '05', name: 'Schedule', repo: 'pamawas-scheduler', kind: 'Orchestration', desc: 'Trigger investigation and morning digest workflows.', tone: 'green' },
+  { n: '06', name: 'Deliver', repo: 'pamawas-reporter', kind: 'Deterministic', desc: 'Send concise reports to Discord, Telegram, or email.', tone: 'green' },
+];
+---
+
+<section id="architecture" class="band band-dark" aria-labelledby="architecture-title">
+  <div class="shell">
+    <header class="section-heading section-heading-inverse">
+      <div><span class="section-index">03</span><span class="eyebrow">System design</span></div>
+      <h2 id="architecture-title">Structure evidence before asking the model.</h2>
+      <p>The LLM never receives an unbounded alert dump. Deterministic services create a traceable incident record first; the investigator can only query approved read-only tools.</p>
+    </header>
+
+    <div class="architecture-legend" aria-label="Architecture legend">
+      <span><i class="legend-mark blue"></i>Deterministic boundary</span>
+      <span><i class="legend-mark amber"></i>Bounded AI boundary</span>
+      <span><i class="legend-mark green"></i>Delivery boundary</span>
+    </div>
+
+    <div class="architecture-flow" role="list" aria-label="Pamawas service pipeline">
+      {stages.map((stage, index) => (
+        <>
+          <a class={`architecture-stage tone-${stage.tone}`} href={`https://github.com/Pamawas/${stage.repo}`} target="_blank" rel="noopener" role="listitem">
+            <div class="stage-meta"><span>{stage.n}</span><span>{stage.kind}</span></div>
+            <h3>{stage.name}</h3>
+            <code>{stage.repo}</code>
+            <p>{stage.desc}</p>
+            <span class="stage-link">Open repository ↗</span>
+          </a>
+          {index < stages.length - 1 && <div class="flow-arrow" aria-hidden="true">→</div>}
+        </>
+      ))}
+    </div>
+
+    <div class="boundary-note">
+      <div><span class="boundary-icon">R/O</span><div><strong>Read-only query plane</strong><p>Prometheus, Loki, Kubernetes, PostgreSQL, and Git remain evidence sources, never remediation targets.</p></div></div>
+      <div><span class="boundary-icon">LOG</span><div><strong>Complete audit trail</strong><p>Every tool call, returned observation, evidence class, and confidence statement is retained.</p></div></div>
+    </div>
+  </div>
+</section>

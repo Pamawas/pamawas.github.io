@@ -1,0 +1,66 @@
+---
+const signals = [
+  { time: '01:47:12', source: 'Grafana', text: 'checkout p99 latency > 2.5s' },
+  { time: '01:47:28', source: 'Prometheus', text: 'DB connections reached 100 / 100' },
+  { time: '01:48:02', source: 'Loki', text: 'pool exhausted, 84 occurrences' },
+];
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="live-dot"></span> AI infrastructure incident investigator</div>
+      <h1 id="hero-title">Pamawas</h1>
+      <p class="hero-lede">Know what happened while you were away.</p>
+      <p class="hero-body">Pamawas turns overnight alert noise into one evidence-backed incident brief: what matters, why it happened, and what to check next.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#investigation">Explore the incident <span aria-hidden="true">↓</span></a>
+        <a class="button button-secondary" href="https://github.com/Pamawas" target="_blank" rel="noopener">View source <span aria-hidden="true">↗</span></a>
+      </div>
+      <dl class="hero-principles">
+        <div><dt>Correlation</dt><dd>Deterministic first</dd></div>
+        <div><dt>Investigation</dt><dd>Bounded tools</dd></div>
+        <div><dt>Safety</dt><dd>Read-only always</dd></div>
+      </dl>
+    </div>
+
+    <div class="brief-shell" aria-label="Representative Pamawas morning brief">
+      <div class="brief-toolbar">
+        <div><span class="status-dot"></span><span>Morning brief</span></div>
+        <span class="sample-label">Representative scenario</span>
+      </div>
+      <div class="brief-summary">
+        <div>
+          <span class="data-label">Overnight health</span>
+          <strong class="health-value">99.97%</strong>
+          <span class="health-caption">Healthy between 00:00–06:00 UTC</span>
+        </div>
+        <div class="summary-counts">
+          <div><strong>3</strong><span>incidents</span></div>
+          <div class="needs-attention"><strong>1</strong><span>needs attention</span></div>
+          <div><strong>2</strong><span>recovered</span></div>
+        </div>
+      </div>
+      <article class="incident-focus">
+        <div class="incident-heading">
+          <div><span class="severity severity-high">High</span><span class="incident-id">INC-892</span></div>
+          <span class="confidence">87% confidence</span>
+        </div>
+        <h2>Checkout 500 error burst</h2>
+        <p class="cause"><span>Likely cause</span> Database connection pool exhaustion after the 01:47 release.</p>
+        <div class="signal-list">
+          {signals.map((signal) => (
+            <div class="signal-row">
+              <time>{signal.time}</time><span>{signal.source}</span><p>{signal.text}</p>
+            </div>
+          ))}
+        </div>
+        <div class="recommended-action">
+          <span class="data-label">Recommended first check</span>
+          <p>Compare <code>max_connections</code> with the v2.14.0 pool configuration.</p>
+        </div>
+      </article>
+      <div class="brief-footer"><span>42 alerts correlated into 1 incident</span><span>Zero write actions</span></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+<section id="investigation" class="band band-muted" aria-labelledby="investigation-title">
+  <div class="shell split-heading">
+    <header class="section-heading">
+      <div><span class="section-index">02</span><span class="eyebrow">Representative investigation</span></div>
+      <h2 id="investigation-title">From symptom to supported conclusion.</h2>
+    </header>
+    <p class="section-intro">Review the same incident at three levels: the engineer-facing brief, the deterministic event cluster, and the bounded tool trace.</p>
+  </div>
+
+  <div class="shell investigation-shell">
+    <div class="investigation-tabs" role="tablist" aria-label="Incident investigation views">
+      <button id="tab-digest" class="investigation-tab active" data-tab="digest" role="tab" aria-selected="true" aria-controls="panel-digest" tabindex="0"><span>01</span>Brief</button>
+      <button id="tab-cluster" class="investigation-tab" data-tab="cluster" role="tab" aria-selected="false" aria-controls="panel-cluster" tabindex="-1"><span>02</span>Correlation</button>
+      <button id="tab-trace" class="investigation-tab" data-tab="trace" role="tab" aria-selected="false" aria-controls="panel-trace" tabindex="-1"><span>03</span>Tool trace</button>
+    </div>
+
+    <div class="investigation-content">
+      <aside class="incident-sidebar">
+        <div><span class="data-label">Incident</span><strong>INC-892</strong></div>
+        <dl>
+          <div><dt>Service</dt><dd>checkout-service</dd></div>
+          <div><dt>Window</dt><dd>01:46–02:05 UTC</dd></div>
+          <div><dt>Severity</dt><dd><span class="severity severity-high">High</span></dd></div>
+          <div><dt>Confidence</dt><dd>87%</dd></div>
+          <div><dt>Write actions</dt><dd>0</dd></div>
+        </dl>
+      </aside>
+
+      <div class="panel-stack">
+        <div id="panel-digest" class="investigation-panel active" role="tabpanel" aria-labelledby="tab-digest" tabindex="0">
+          <div class="panel-head"><div><span class="panel-kicker">Morning brief</span><h3>Checkout errors followed a connection ceiling.</h3></div><span class="evidence-badge likely">Likely cause</span></div>
+          <p class="panel-summary">The checkout service produced a 500-error burst immediately after release v2.14.0. Database connections reached the configured limit at the same time. The service recovered after traffic fell, but the pool configuration needs review.</p>
+          <div class="finding-table">
+            <div><span class="evidence-badge fact">Fact</span><p>PostgreSQL reported 100 active connections out of a configured maximum of 100.</p></div>
+            <div><span class="evidence-badge fact">Fact</span><p>The checkout release completed 12 seconds before latency crossed 2.5 seconds.</p></div>
+            <div><span class="evidence-badge likely">Likely</span><p>The new pool configuration exhausted available database connections under load.</p></div>
+            <div><span class="evidence-badge unknown">Unknown</span><p>Whether the release changed connection release timing requires code review.</p></div>
+          </div>
+        </div>
+
+        <div id="panel-cluster" class="investigation-panel" role="tabpanel" aria-labelledby="tab-cluster" tabindex="0" hidden>
+          <div class="panel-head"><div><span class="panel-kicker">Deterministic cluster</span><h3>42 signals reduced to one incident.</h3></div><span class="reduction">97.6% reduction</span></div>
+          <ol class="timeline">
+            <li><time>01:47:00</time><div><strong>Kubernetes</strong><p>Deployment checkout-service:v2.14.0 completed.</p></div></li>
+            <li><time>01:47:12</time><div><strong>Grafana</strong><p>Checkout p99 latency exceeded 2.5 seconds.</p></div></li>
+            <li><time>01:47:28</time><div><strong>Prometheus</strong><p>Database active connections reached 100.</p></div></li>
+            <li><time>01:48:02</time><div><strong>Loki</strong><p>“Connection timed out: pool exhausted” appeared 84 times.</p></div></li>
+          </ol>
+        </div>
+
+        <div id="panel-trace" class="investigation-panel" role="tabpanel" aria-labelledby="tab-trace" tabindex="0" hidden>
+          <div class="panel-head"><div><span class="panel-kicker">Bounded investigator</span><h3>Four read-only queries, then synthesis.</h3></div><span class="readonly-label">Read only</span></div>
+          <ol class="trace-list">
+            <li><span>01</span><div><code>promql.query(http_5xx_rate)</code><p>Observed a 340 req/s error spike.</p></div></li>
+            <li><span>02</span><div><code>promql.query(pg_connections)</code><p>Observed 100 / 100 active connections.</p></div></li>
+            <li><span>03</span><div><code>logql.query(pool_errors)</code><p>Found repeated connection pool timeouts.</p></div></li>
+            <li><span>04</span><div><code>k8s.get_deployment(checkout)</code><p>Observed v2.14.0 deployed at 01:47 UTC.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

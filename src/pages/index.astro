@@ -1,525 +1,119 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ArchitectureDiagram from '../components/ArchitectureDiagram.astro';
+import OperationalHero from '../components/OperationalHero.astro';
+import WorkflowSection from '../components/WorkflowSection.astro';
+import InvestigationWorkspace from '../components/InvestigationWorkspace.astro';
+import SystemArchitecture from '../components/SystemArchitecture.astro';
+import TrustAndSetup from '../components/TrustAndSetup.astro';
 ---
 
-<Layout title="Pamawas — AI Infrastructure Incident Investigator" description="Transform alert floods into actionable incident reports. AI-powered root cause analysis for infrastructure teams.">
-  <!-- Navigation -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="container nav-inner">
-      <a href="https://github.com/Pamawas" class="nav-brand" target="_blank" rel="noopener">Pamawas</a>
+<Layout title="Pamawas — Evidence-backed infrastructure incident investigation" description="Pamawas turns alert noise into concise, evidence-backed infrastructure incident reports using deterministic correlation and bounded read-only AI investigation.">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="shell nav-inner" aria-label="Primary navigation">
+      <a class="brand" href="#main" aria-label="Pamawas home"><span class="brand-mark" aria-hidden="true">P</span><span>Pamawas</span></a>
       <div class="nav-links">
+        <a href="#investigation">Investigation</a>
         <a href="#architecture">Architecture</a>
-        <a href="#demo">Demo</a>
-        <a href="#quick-start">Quick Start</a>
-        <a href="#philosophy">Principles</a>
+        <a href="#trust">Trust model</a>
+        <a href="#quick-start">Quick start</a>
       </div>
       <div class="nav-actions">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">
-          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
+        <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to light theme" title="Switch theme">
+          <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+          <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
         </button>
-        <a href="https://github.com/Pamawas" class="btn btn-ghost nav-cta" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="nav-github" href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="container hero-content">
-      <div class="hero-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
-        AI Infrastructure Incident Investigator
-      </div>
-      <h1 id="hero-title" class="display-md">Tell me what happened to my infrastructure while I was away</h1>
-      <p class="body-lg">Not a list of 183 alerts. One concise morning report - what mattered, why it happened, and what to do about it.</p>
-      <div class="hero-actions">
-        <a href="https://github.com/Pamawas" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
-        <a href="#quick-start" class="btn btn-ghost">Quick Start</a>
-      </div>
-      <div class="hero-trust" role="list" aria-label="Components">
-        <a href="https://github.com/Pamawas/pamawas-ingest" target="_blank" rel="noopener" role="listitem">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Ingest API
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-correlator" target="_blank" rel="noopener" role="listitem">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Correlator
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-investigator" target="_blank" rel="noopener" role="listitem">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Investigator
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-reporter" target="_blank" rel="noopener" role="listitem">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Reporter
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-scheduler" target="_blank" rel="noopener" role="listitem">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Scheduler
-        </a>
-      </div>
-      <div class="scroll-indicator" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-    </div>
-  </section>
+  <main id="main">
+    <OperationalHero />
+    <WorkflowSection />
+    <InvestigationWorkspace />
+    <SystemArchitecture />
+    <TrustAndSetup />
+  </main>
 
-  <!-- Problem / Solution -->
-  <section id="problem-solution" aria-labelledby="ps-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="label">The Problem</span>
-        <h2 id="ps-title" class="heading-1">Infrastructure teams drown in alerts. The signal gets lost in the noise.</h2>
-        <p class="body">Raw alert floods create fatigue. Manual investigation takes hours. Confident wrong answers from black-box tools erode trust.</p>
-      </header>
-      <div class="comparison">
-        <article class="comp-card card problem">
-          <h3>
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="8" x2="12" y2="12"></line>
-              <line x1="12" y1="16" x2="12.01" y2="16"></line>
-            </svg>
-            Before Pamawas
-          </h3>
-          <ul class="comp-list">
-            <li><span class="num">1</span><span>2,300+ raw alerts overnight from Grafana, Prometheus, Loki</span></li>
-            <li><span class="num">2</span><span>Alert fatigue - engineers ignore or mute notifications</span></li>
-            <li><span class="num">3</span><span>Manual RCA takes hours - digging through dashboards, logs, deployments</span></li>
-            <li><span class="num">4</span><span>No shared understanding - each engineer sees a different slice</span></li>
-            <li><span class="num">5</span><span>Confident wrong answers from black-box AI tools</span></li>
-          </ul>
-        </article>
-        <article class="comp-card card solution">
-          <h3>
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-            After Pamawas
-          </h3>
-          <ul class="comp-list">
-            <li><span class="num">1</span><span>~17 correlated incidents - time-window + service/label grouping</span></li>
-            <li><span class="num">2</span><span>One morning digest - Discord, Telegram, or Email</span></li>
-            <li><span class="num">3</span><span>Bounded LLM investigator pulls PromQL, LogQL, deployment data on demand</span></li>
-            <li><span class="num">4</span><span>Every finding typed: FACT, LIKELY_CAUSE, HYPOTHESIS, UNKNOWN</span></li>
-            <li><span class="num">5</span><span>Read-only - zero autonomous remediation, full audit trail</span></li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Architecture -->
-  <section id="architecture" aria-labelledby="arch-title">
-    <div class="container">
-      <header class="section-header arch-section-header">
-        <span class="label">Architecture</span>
-        <h2 id="arch-title" class="heading-1">Deterministic correlation first. Bounded LLM investigation second. Read-only always.</h2>
-        <p class="body arch-subtitle">From webhook ingestion to correlated evidence, autonomous investigation, and verified morning incident digests.</p>
-      </header>
-      <ArchitectureDiagram />
-      <div class="repo-grid" role="list" aria-label="Repository highlights">
-        <a href="https://github.com/Pamawas/pamawas-ingest" target="_blank" rel="noopener" class="repo-card" role="listitem">
-          <span class="repo-badge">Go</span>
-          <h3>pamawas-ingest</h3>
-          <p>Webhook ingestion & normalization</p>
-          <span class="repo-link">View repo →</span>
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-correlator" target="_blank" rel="noopener" class="repo-card" role="listitem">
-          <span class="repo-badge">Go</span>
-          <h3>pamawas-correlator</h3>
-          <p>Deterministic event-to-incident correlation</p>
-          <span class="repo-link">View repo →</span>
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-investigator" target="_blank" rel="noopener" class="repo-card" role="listitem">
-          <span class="repo-badge">Python</span>
-          <h3>pamawas-investigator</h3>
-          <p>Bounded tool-calling investigation</p>
-          <span class="repo-link">View repo →</span>
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-reporter" target="_blank" rel="noopener" class="repo-card" role="listitem">
-          <span class="repo-badge">Go</span>
-          <h3>pamawas-reporter</h3>
-          <p>Delivery adapters for alerts and digests</p>
-          <span class="repo-link">View repo →</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Demo Report -->
-  <section id="demo" aria-labelledby="demo-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="label">Interactive Demo</span>
-        <h2 id="demo-title" class="heading-1">Sample Morning Digest &amp; Investigation</h2>
-        <p class="body">Explore the morning report, deterministic correlation cluster, and bounded LLM tool execution trace.</p>
-      </header>
-
-      <!-- Demo View Tabs -->
-      <div class="demo-tabs" role="tablist" aria-label="Demo views">
-        <button class="demo-tab-btn active" data-tab="digest" role="tab" aria-selected="true">
-          <span>🌅</span> Morning Digest
-        </button>
-        <button class="demo-tab-btn" data-tab="correlated" role="tab" aria-selected="false">
-          <span>🔗</span> Correlated Incident Cluster
-        </button>
-        <button class="demo-tab-btn" data-tab="investigator" role="tab" aria-selected="false">
-          <span>🤖</span> LLM Tool Execution Trace
-        </button>
-      </div>
-
-      <div class="demo-report" role="region" aria-label="Sample report and trace viewer">
-        <div class="demo-report-head" aria-hidden="true">
-          <div class="demo-head-left">
-            <span class="demo-dot"></span>
-            <span class="demo-dot"></span>
-            <span class="demo-dot"></span>
-            <span id="demo-active-file" class="demo-title">pamawas/reports/2026-08-16_morning-digest.txt</span>
-          </div>
-          <span class="meta-tag" style="font-size:0.7rem; padding: 2px 8px;">Confidence: 87%</span>
-        </div>
-
-        <!-- Pane 1: Morning Digest -->
-        <div id="pane-digest" class="demo-pane active">
-          <p class="demo-line">🌅 <strong>Good morning.</strong> Infrastructure was <strong>99.97% healthy</strong> overnight.</p>
-          <p class="demo-line">3 incidents occurred. <strong>1 needs your attention</strong>. 2 recovered automatically.</p>
-          <p class="demo-line"><strong>Primary Incident:</strong> #INC-892 (checkout-service 500 error burst)</p>
-          <p class="demo-line"><strong>Most likely root cause:</strong> Database connection pool exhaustion following 01:47 K8s release. <strong>Confidence:</strong> 87%.</p>
-          <p class="demo-line"><strong>Evidence classification:</strong> <span class="chip chip-fact">FACT: DB conn limit reached (100/100)</span> <span class="chip chip-likely">LIKELY: poolConfig maxConns too low</span></p>
-          <p class="demo-line"><strong>Recommended actions:</strong></p>
-          <ol class="demo-actions">
-            <li>Increase <code>max_connections</code> in postgres-pool helm values.</li>
-            <li>Review connection release timeouts in <code>checkout-service:v2.14.0</code>.</li>
-            <li>Verify auto-reconnection backoff strategy.</li>
-          </ol>
-          <p class="demo-line">No data corruption or unhandled failovers occurred.</p>
-        </div>
-
-        <!-- Pane 2: Correlated Incidents -->
-        <div id="pane-correlated" class="demo-pane">
-          <p class="demo-line"><strong>Deterministic Cluster #INC-892</strong> &bull; Window: 01:46:00 - 02:05:00 UTC</p>
-          <p class="demo-line">Correlated <strong>42 raw alert webhooks</strong> into 1 actionable incident based on shared topology labels:</p>
-          <ol class="demo-actions">
-            <li><code>01:47:12</code> &bull; Grafana Alert: <code>checkout-service p99 latency &gt; 2500ms</code></li>
-            <li><code>01:47:28</code> &bull; Prometheus: <code>pg_stat_activity_connections_active == max (100)</code></li>
-            <li><code>01:48:02</code> &bull; Loki: <code>&quot;connection timed out after 5000ms: pool exhausted&quot;</code> (84 occurrences)</li>
-            <li><code>01:49:15</code> &bull; K8s Event: <code>Deployment/checkout-service rollout completed (v2.14.0)</code></li>
-          </ol>
-          <p class="demo-line">Deduplication ratio: <strong>97.6% noise reduction</strong> (42 alerts &rarr; 1 incident).</p>
-        </div>
-
-        <!-- Pane 3: LLM Investigator Trace -->
-        <div id="pane-investigator" class="demo-pane">
-          <p class="demo-line"><strong>Autonomous Investigation Log</strong> (Bounded Read-Only Tools)</p>
-          <ol class="demo-actions">
-            <li><code>[01:50:02] TOOL_CALL: promql_query(query="sum(rate(http_requests_total&#123;status=~'5..'&#125;[5m]))")</code> &rarr; <code>spike: 340 req/s</code></li>
-            <li><code>[01:50:18] TOOL_CALL: promql_query(query="pg_stat_database_numbackends&#123;datname='production'&#125;")</code> &rarr; <code>100/100 connections</code></li>
-            <li><code>[01:50:41] TOOL_CALL: logql_query(query="&#123;app='checkout'&#125; |= 'error' | json")</code> &rarr; <code>found DB connection pool timeout</code></li>
-            <li><code>[01:51:05] TOOL_CALL: k8s_get_deployments(namespace="prod", service="checkout")</code> &rarr; <code>image: v2.14.0 deployed at 01:47:00</code></li>
-          </ol>
-          <p class="demo-line"><strong>Synthesis Output:</strong> Root cause diagnosed in <strong>63 seconds</strong> with zero write actions.</p>
-        </div>
-      </div>
-
-      <div class="evidence-types" role="list" aria-label="Evidence types">
-        <article class="evidence-card fact" role="listitem" data-evidence="fact" tabindex="0">
-          <div class="evidence-type">FACT</div>
-          <p class="evidence-desc">Directly observed in metrics/logs</p>
-        </article>
-        <article class="evidence-card likely" role="listitem" data-evidence="likely" tabindex="0">
-          <div class="evidence-type">LIKELY_CAUSE</div>
-          <p class="evidence-desc">Strongly supported, not certain</p>
-        </article>
-        <article class="evidence-card hypothesis" role="listitem" data-evidence="hypo" tabindex="0">
-          <div class="evidence-type">HYPOTHESIS</div>
-          <p class="evidence-desc">Plausible, unverified</p>
-        </article>
-        <article class="evidence-card unknown" role="listitem" data-evidence="unknown" tabindex="0">
-          <div class="evidence-type">UNKNOWN</div>
-          <p class="evidence-desc">Insufficient evidence - stated explicitly</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick Start -->
-  <section id="quick-start" class="quick-start" aria-labelledby="qs-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="label">Quick Start</span>
-        <h2 id="qs-title" class="heading-1">Get Running in 3 Commands</h2>
-        <p class="body">Clone all components, bring up the local stack, run migrations.</p>
-      </header>
-      <div class="code-wrapper">
-        <div class="code-header">
-          <div class="code-header-left" aria-hidden="true">
-            <span class="demo-dot"></span>
-            <span class="demo-dot"></span>
-            <span class="demo-dot"></span>
-            <span class="demo-title">bash — quickstart.sh</span>
-          </div>
-          <button id="copy-code-btn" class="code-copy-btn" aria-label="Copy commands to clipboard">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-            <span class="copy-text">Copy</span>
-          </button>
-        </div>
-        <pre id="quickstart-code" class="code-block" tabindex="0" role="region" aria-label="Quick start commands"><code><span class="comment"># 1. Clone all repository components</span>
-<span class="keyword">for</span> repo <span class="keyword">in</span> pamawas-ingest pamawas-correlator pamawas-investigator pamawas-reporter pamawas-scheduler pamawas-schema pamawas-infra; <span class="keyword">do</span>
-  git clone https://github.com/Pamawas/<span class="variable">$repo</span>.git
-<span class="keyword">done</span>
-
-<span class="comment"># 2. Bring up local stack (PostgreSQL + services)</span>
-docker compose -f pamawas-infra/docker-compose.local.yml up -d
-
-<span class="comment"># 3. Run database migrations</span>
-cd pamawas-schema && go run ./cmd/migrate
-
-<span class="comment"># 4. Start services (each has its own docker-compose or make target)</span></code></pre>
-      </div>
-      <div class="quick-links" role="list" aria-label="Quick links to component docs">
-        <a href="https://github.com/Pamawas/pamawas-ingest" target="_blank" rel="noopener" class="quick-link" role="listitem">
-          <svg class="quick-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
-          </svg>
-          <h3>Ingest API</h3>
-          <p>Webhook handlers, normalization, PostgreSQL storage</p>
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-investigator" target="_blank" rel="noopener" class="quick-link" role="listitem">
-          <svg class="quick-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-          </svg>
-          <h3>Investigator</h3>
-          <p>Bounded tool-calling LLM with PromQL, LogQL, DB access</p>
-        </a>
-        <a href="https://github.com/Pamawas/pamawas-infra" target="_blank" rel="noopener" class="quick-link" role="listitem">
-          <svg class="quick-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M8 21h8"></path>
-            <path d="M12 17v4"></path>
-          </svg>
-          <h3>Infrastructure</h3>
-          <p>K8s, Helm, ArgoCD, docker-compose for local dev</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Philosophy -->
-  <section id="philosophy" aria-labelledby="phil-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="label">Philosophy</span>
-        <h2 id="phil-title" class="heading-1">Four Design Principles</h2>
-        <p class="body">The core tenets that guide every architectural decision.</p>
-      </header>
-      <div class="principles" role="list" aria-label="Design principles">
-        <article class="principle-card card" role="listitem">
-          <div class="principle-num">1</div>
-          <h3>Alerts Are Evidence</h3>
-          <p>100 alerts may represent one failure. Correlate before investigating. Group by time window + service/label overlap.</p>
-        </article>
-        <article class="principle-card card" role="listitem">
-          <div class="principle-num">2</div>
-          <h3>LLM Is the Investigator</h3>
-          <p>Structure data first. Give the LLM curated context plus bounded tool access. Do not dump raw alert floods into the model.</p>
-        </article>
-        <article class="principle-card card" role="listitem">
-          <div class="principle-num">3</div>
-          <h3>Evidence Before Conclusions</h3>
-          <p>Every finding typed: FACT, LIKELY_CAUSE, HYPOTHESIS, UNKNOWN. Honest uncertainty beats confident hallucination.</p>
-        </article>
-        <article class="principle-card card" role="listitem">
-          <div class="principle-num">4</div>
-          <h3>Read-Only First</h3>
-          <p>Zero autonomous remediation. Query, correlate, explain, recommend. Controlled remediation is a later phase.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Metrics -->
-  <section id="metrics" aria-labelledby="metrics-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="label">Metrics</span>
-        <h2 id="metrics-title" class="heading-1">Success Metrics We Track</h2>
-        <p class="body">Not vanity metrics - the signals that tell us if this actually helps.</p>
-      </header>
-      <div class="metrics-grid" role="list" aria-label="Success metrics">
-        <article class="metric-card" role="listitem">
-          <div class="metric-value">2,300 &rarr; ~17</div>
-          <div class="metric-label">Alert Reduction</div>
-          <p class="metric-desc">Raw alerts vs incidents produced</p>
-        </article>
-        <article class="metric-card" role="listitem">
-          <div class="metric-value">Correct / Wrong / Unknown</div>
-          <div class="metric-label">Investigation Quality</div>
-          <p class="metric-desc">RCA accuracy tracked over time</p>
-        </article>
-        <article class="metric-card" role="listitem">
-          <div class="metric-value">Useful / Not / Wrong / Missing</div>
-          <div class="metric-label">Human Usefulness</div>
-          <p class="metric-desc">Per-report rating from engineers</p>
-        </article>
-        <article class="metric-card" role="listitem">
-          <div class="metric-value">Hours &rarr; Minutes</div>
-          <div class="metric-label">Time Saved</div>
-          <p class="metric-desc">Manual investigation vs review time</p>
-        </article>
-        <article class="metric-card" role="listitem">
-          <div class="metric-value">Zero Tolerance</div>
-          <div class="metric-label">False Confidence</div>
-          <p class="metric-desc">Confident wrong answers = failure</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h3>Pamawas</h3>
-          <p>"Tell me what happened to my infrastructure while I was away, what matters, why it happened, and what I should do about it."</p>
-          <div class="footer-social">
-            <a href="https://github.com/Pamawas" target="_blank" rel="noopener" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Components</h4>
-          <ul>
-            <li><a href="https://github.com/Pamawas/pamawas-ingest" target="_blank" rel="noopener">Ingest API</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-correlator" target="_blank" rel="noopener">Correlator</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-investigator" target="_blank" rel="noopener">Investigator</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-reporter" target="_blank" rel="noopener">Reporter</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-scheduler" target="_blank" rel="noopener">Scheduler</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-schema" target="_blank" rel="noopener">Schema</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-infra" target="_blank" rel="noopener">Infra</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="https://github.com/Pamawas/pamawas-schema/blob/main/docs/mvp-design.md" target="_blank" rel="noopener">MVP Design Doc</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-schema/blob/main/docs/grand-design.md" target="_blank" rel="noopener">Grand Design Doc</a></li>
-            <li><a href="https://github.com/orgs/Pamawas/projects" target="_blank" rel="noopener">Kanban Board</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Community</h4>
-          <ul>
-            <li><a href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub Org</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-ingest/issues" target="_blank" rel="noopener">Report Issues</a></li>
-            <li><a href="https://github.com/Pamawas/pamawas-ingest/discussions" target="_blank" rel="noopener">Discussions</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        Built for infrastructure teams who'd rather sleep. MIT License.
-      </div>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div><a class="brand footer-brand" href="#main"><span class="brand-mark" aria-hidden="true">P</span><span>Pamawas</span></a><p>Evidence-backed incident investigation for infrastructure teams.</p></div>
+      <div class="footer-links"><a href="https://github.com/Pamawas/pamawas-schema/blob/main/docs/mvp-design.md" target="_blank" rel="noopener">MVP design</a><a href="https://github.com/Pamawas/pamawas-schema/blob/main/docs/grand-design.md" target="_blank" rel="noopener">Grand design</a><a href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub organization</a></div>
+      <p class="footer-note">Open source · MIT License</p>
     </div>
   </footer>
 
   <script>
-    // Theme toggle
-    const toggle = document.getElementById('theme-toggle');
-    toggle?.addEventListener('click', () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
-        (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      const newTheme = isDark ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      if (newTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      localStorage.setItem('theme', newTheme);
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+
+    function currentTheme() {
+      const explicit = root.getAttribute('data-theme');
+      if (explicit === 'light' || explicit === 'dark') return explicit;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function syncThemeLabel() {
+      const next = currentTheme() === 'dark' ? 'light' : 'dark';
+      themeToggle?.setAttribute('aria-label', `Switch to ${next} theme`);
+    }
+
+    themeToggle?.addEventListener('click', () => {
+      const next = currentTheme() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      root.classList.toggle('dark', next === 'dark');
+      localStorage.setItem('theme', next);
+      syncThemeLabel();
+    });
+    syncThemeLabel();
+
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    function activateTab(tab: HTMLButtonElement, focus = false) {
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        const panelId = item.getAttribute('aria-controls');
+        const panel = panelId ? document.getElementById(panelId) : null;
+        if (panel) {
+          panel.hidden = !selected;
+          panel.classList.toggle('active', selected);
+        }
+      });
+      if (focus) tab.focus();
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex: number | null = null;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = tabs.length - 1;
+        if (nextIndex !== null) {
+          event.preventDefault();
+          activateTab(tabs[nextIndex], true);
+        }
+      });
     });
 
-    // Copy code button
-    const copyBtn = document.getElementById('copy-code-btn');
-    const codeBlock = document.getElementById('quickstart-code');
-    copyBtn?.addEventListener('click', async () => {
-      if (!codeBlock) return;
-      const textToCopy = codeBlock.innerText;
+    const copyButton = document.getElementById('copy-code-btn');
+    const quickstart = document.getElementById('quickstart-code');
+    const copyStatus = document.getElementById('copy-status');
+    copyButton?.addEventListener('click', async () => {
+      if (!quickstart) return;
       try {
-        await navigator.clipboard.writeText(textToCopy);
-        const copyTextSpan = copyBtn.querySelector('.copy-text');
-        if (copyTextSpan) copyTextSpan.textContent = 'Copied! ✓';
-        copyBtn.classList.add('copied');
-        setTimeout(() => {
-          if (copyTextSpan) copyTextSpan.textContent = 'Copy';
-          copyBtn.classList.remove('copied');
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy text: ', err);
+        await navigator.clipboard.writeText(quickstart.innerText);
+        const label = copyButton.querySelector('.copy-text');
+        if (label) label.textContent = 'Copied';
+        if (copyStatus) copyStatus.textContent = 'Quick start commands copied to clipboard.';
+        window.setTimeout(() => { if (label) label.textContent = 'Copy'; }, 1800);
+      } catch {
+        if (copyStatus) copyStatus.textContent = 'Unable to copy commands. Select the command block manually.';
       }
-    });
-
-    // Demo View Tabs
-    const tabButtons = document.querySelectorAll('.demo-tab-btn');
-    const activeFileName = document.getElementById('demo-active-file');
-    const fileNames: Record<string, string> = {
-      digest: 'pamawas/reports/2026-08-16_morning-digest.txt',
-      correlated: 'pamawas/correlator/cluster_inc-892.json',
-      investigator: 'pamawas/investigator/agent_trace_inc-892.log',
-    };
-
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tab = btn.getAttribute('data-tab');
-        if (!tab) return;
-
-        tabButtons.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-
-        document.querySelectorAll('.demo-pane').forEach(pane => pane.classList.remove('active'));
-        const activePane = document.getElementById(`pane-${tab}`);
-        if (activePane) activePane.classList.add('active');
-
-        if (activeFileName && fileNames[tab]) {
-          activeFileName.textContent = fileNames[tab];
-        }
-      });
-    });
-
-    // Interactive Evidence Filter Cards
-    const evidenceCards = document.querySelectorAll('.evidence-card');
-    evidenceCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const isAlreadyActive = card.classList.contains('active-filter');
-        evidenceCards.forEach(c => c.classList.remove('active-filter'));
-        if (!isAlreadyActive) {
-          card.classList.add('active-filter');
-        }
-      });
     });
   </script>
 </Layout>
