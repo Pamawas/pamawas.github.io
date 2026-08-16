@@ -333,6 +333,8 @@ section {
 }
 
 .scroll-indicator {
+  display: flex;
+  justify-content: center;
   color: var(--text-muted);
   margin-top: 20px;
   opacity: 0.58;
