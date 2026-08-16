@@ -27,6 +27,15 @@ const { title = 'Pamawas — AI Infrastructure Incident Investigator', descripti
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <title>{title}</title>
+  <script is:inline>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        if (saved === 'dark') document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
   {rest.head}
 </head>
 <body {...rest}>
