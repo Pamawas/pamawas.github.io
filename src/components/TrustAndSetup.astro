@@ -8,7 +8,7 @@ const principles = [
 ---
 
 <section id="trust" class="band" aria-labelledby="trust-title">
-  <div class="shell split-heading">
+  <div class="shell split-heading reveal-item">
     <header class="section-heading">
       <div><span class="section-index">04</span><span class="eyebrow">Trust model</span></div>
       <h2 id="trust-title">Designed to be useful without pretending certainty.</h2>
@@ -17,14 +17,14 @@ const principles = [
   </div>
   <div class="shell principle-grid">
     {principles.map(([number, title, body]) => (
-      <article class="principle-item"><span>{number}</span><h3>{title}</h3><p>{body}</p></article>
+      <article class="principle-item reveal-item" style={`--reveal-delay: ${Number(number) * 70 - 70}ms`}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>
     ))}
   </div>
 </section>
 
 <section id="quick-start" class="band band-muted" aria-labelledby="quick-start-title">
   <div class="shell quickstart-grid">
-    <div class="section-heading">
+    <div class="section-heading reveal-item">
       <div><span class="section-index">05</span><span class="eyebrow">Run locally</span></div>
       <h2 id="quick-start-title">Inspect the system from source.</h2>
       <p>Clone the components, start the local infrastructure, and apply the shared schema.</p>
@@ -34,7 +34,7 @@ const principles = [
         <a href="https://github.com/Pamawas" target="_blank" rel="noopener">All repositories ↗</a>
       </div>
     </div>
-    <div class="terminal-block">
+    <div class="terminal-block reveal-item" style="--reveal-delay: 120ms">
       <div class="terminal-head"><span>quickstart.sh</span><button id="copy-code-btn" aria-label="Copy quick start commands"><span class="copy-text">Copy</span></button></div>
       <pre id="quickstart-code"><code><span class="code-comment"># Clone the Pamawas repositories</span>
 <span class="code-keyword">for</span> repo <span class="code-keyword">in</span> ingest correlator investigator reporter scheduler schema infra; <span class="code-keyword">do</span>

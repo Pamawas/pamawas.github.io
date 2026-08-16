@@ -1,0 +1,270 @@
+/* Motion is progressive enhancement: static content remains the default. */
+:root {
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-standard: cubic-bezier(.4, 0, .2, 1);
+}
+
+.site-header,
+.nav-links a,
+.icon-button,
+.nav-github,
+.button,
+.workflow-step,
+.investigation-shell,
+.architecture-stage,
+.principle-item,
+.terminal-block,
+.stage-link {
+  transition:
+    transform 320ms var(--ease-out),
+    box-shadow 320ms var(--ease-out),
+    border-color 220ms var(--ease-standard),
+    background-color 220ms var(--ease-standard),
+    color 220ms var(--ease-standard),
+    opacity 220ms var(--ease-standard);
+}
+
+.site-header.is-scrolled {
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  box-shadow: 0 10px 35px rgba(8, 15, 25, .08);
+}
+
+.brand-mark {
+  transition: transform 380ms var(--ease-out), background-color 220ms ease;
+}
+
+.brand:hover .brand-mark {
+  transform: rotate(-5deg) scale(1.06);
+}
+
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 15px;
+  bottom: 13px;
+  left: 15px;
+  height: 1px;
+  background: var(--blue);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 260ms var(--ease-out);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.icon-button:hover,
+.button-secondary:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
+
+.nav-github:hover,
+.button-primary:hover {
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--blue) 24%, transparent);
+  transform: translateY(-2px);
+}
+
+.button span,
+.nav-github span,
+.stage-link {
+  transition: transform 260ms var(--ease-out);
+}
+
+.button:hover span,
+.nav-github:hover span {
+  transform: translate(2px, -2px);
+}
+
+/* Hero choreography runs once and establishes the visual hierarchy. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes brief-enter {
+  from { opacity: 0; transform: translateY(28px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes status-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 15%, transparent); }
+  50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--green) 5%, transparent); }
+}
+
+.motion-ready .hero-copy > * {
+  animation: hero-rise 700ms var(--ease-out) both;
+}
+
+.motion-ready .hero-copy > :nth-child(1) { animation-delay: 60ms; }
+.motion-ready .hero-copy > :nth-child(2) { animation-delay: 120ms; }
+.motion-ready .hero-copy > :nth-child(3) { animation-delay: 190ms; }
+.motion-ready .hero-copy > :nth-child(4) { animation-delay: 250ms; }
+.motion-ready .hero-copy > :nth-child(5) { animation-delay: 310ms; }
+.motion-ready .hero-copy > :nth-child(6) { animation-delay: 370ms; }
+.motion-ready .brief-shell { animation: brief-enter 850ms var(--ease-out) 180ms both; }
+.motion-ready .live-dot,
+.motion-ready .status-dot { animation: status-pulse 2.6s ease-in-out 1s infinite; }
+
+.brief-shell:hover {
+  box-shadow: 0 30px 80px rgba(4, 9, 16, .28);
+  transform: translateY(-4px);
+}
+
+.signal-row {
+  transition: background-color 180ms ease, padding 260ms var(--ease-out);
+}
+
+.signal-row:hover {
+  padding-inline: 8px;
+  background: color-mix(in srgb, var(--inverse-3) 70%, transparent);
+}
+
+/* Viewport reveals are enabled only after the observer is installed. */
+.motion-ready .reveal-item {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.motion-ready .reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 720ms var(--ease-out) var(--reveal-delay, 0ms),
+    transform 720ms var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+.workflow-step:hover,
+.principle-item:hover {
+  position: relative;
+  z-index: 2;
+  border-color: var(--line-strong);
+  box-shadow: 0 18px 46px rgba(11, 22, 38, .10);
+  transform: translateY(-6px);
+}
+
+.workflow-step:hover .step-top strong {
+  color: var(--blue);
+}
+
+.investigation-shell:hover,
+.terminal-block:hover {
+  box-shadow: 0 22px 60px rgba(11, 22, 38, .10);
+  transform: translateY(-3px);
+}
+
+.investigation-tab {
+  position: relative;
+  transition: color 220ms ease, background-color 220ms ease;
+}
+
+.investigation-tab:not(.active):hover {
+  background: var(--surface-3);
+  color: var(--text);
+}
+
+.finding-table > div,
+.timeline li,
+.trace-list li {
+  transition: background-color 180ms ease, padding 260ms var(--ease-out);
+}
+
+.finding-table > div:hover,
+.timeline li:hover,
+.trace-list li:hover {
+  padding-inline: 10px;
+  background: var(--surface-2);
+}
+
+/* Pipeline motion conveys direction without turning the diagram into a spectacle. */
+@keyframes flow-line {
+  to { background-position: 16px 0; }
+}
+
+@keyframes arrow-breathe {
+  0%, 100% { opacity: .45; transform: translateX(-2px); }
+  50% { opacity: 1; transform: translateX(2px); }
+}
+
+.flow-arrow {
+  position: relative;
+  overflow: hidden;
+  color: transparent;
+}
+
+.flow-arrow::before {
+  width: 100%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, #65748b 0 6px, transparent 6px 12px);
+  background-size: 16px 1px;
+  content: "";
+  animation: flow-line 1.2s linear infinite;
+}
+
+.flow-arrow::after {
+  position: absolute;
+  right: 1px;
+  color: var(--blue);
+  content: "›";
+  animation: arrow-breathe 1.6s ease-in-out infinite;
+}
+
+.architecture-stage:hover {
+  border-color: #526177;
+  border-top-color: currentColor;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, .22);
+  transform: translateY(-7px);
+}
+
+.architecture-stage:hover .stage-link {
+  color: var(--blue);
+  transform: translateX(4px);
+}
+
+.architecture-stage.tone-blue { color: var(--blue); }
+.architecture-stage.tone-amber { color: var(--amber); }
+.architecture-stage.tone-green { color: var(--green); }
+.architecture-stage h3,
+.architecture-stage p,
+.architecture-stage .stage-link { color: var(--inverse-text); }
+.architecture-stage p { color: var(--inverse-muted); }
+
+.terminal-head button:hover {
+  border-color: var(--blue);
+  background: color-mix(in srgb, var(--blue) 14%, transparent);
+}
+
+@media (max-width: 900px) {
+  .brief-shell:hover,
+  .workflow-step:hover,
+  .principle-item:hover,
+  .investigation-shell:hover,
+  .terminal-block:hover,
+  .architecture-stage:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .hero-copy > *,
+  .motion-ready .brief-shell,
+  .motion-ready .reveal-item,
+  .motion-ready .reveal-item.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .flow-arrow::before,
+  .flow-arrow::after,
+  .live-dot,
+  .status-dot {
+    animation: none !important;
+  }
+}

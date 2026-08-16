@@ -11,7 +11,7 @@ const stages = [
 
 <section id="architecture" class="band band-dark" aria-labelledby="architecture-title">
   <div class="shell">
-    <header class="section-heading section-heading-inverse">
+    <header class="section-heading section-heading-inverse reveal-item">
       <div><span class="section-index">03</span><span class="eyebrow">System design</span></div>
       <h2 id="architecture-title">Structure evidence before asking the model.</h2>
       <p>The LLM never receives an unbounded alert dump. Deterministic services create a traceable incident record first; the investigator can only query approved read-only tools.</p>
@@ -26,7 +26,7 @@ const stages = [
     <div class="architecture-flow" role="list" aria-label="Pamawas service pipeline">
       {stages.map((stage, index) => (
         <>
-          <a class={`architecture-stage tone-${stage.tone}`} href={`https://github.com/Pamawas/${stage.repo}`} target="_blank" rel="noopener" role="listitem">
+          <a class={`architecture-stage tone-${stage.tone} reveal-item`} style={`--reveal-delay: ${index * 70}ms`} href={`https://github.com/Pamawas/${stage.repo}`} target="_blank" rel="noopener" role="listitem">
             <div class="stage-meta"><span>{stage.n}</span><span>{stage.kind}</span></div>
             <h3>{stage.name}</h3>
             <code>{stage.repo}</code>
@@ -38,7 +38,7 @@ const stages = [
       ))}
     </div>
 
-    <div class="boundary-note">
+    <div class="boundary-note reveal-item">
       <div><span class="boundary-icon">R/O</span><div><strong>Read-only query plane</strong><p>Prometheus, Loki, Kubernetes, PostgreSQL, and Git remain evidence sources, never remediation targets.</p></div></div>
       <div><span class="boundary-icon">LOG</span><div><strong>Complete audit trail</strong><p>Every tool call, returned observation, evidence class, and confidence statement is retained.</p></div></div>
     </div>
