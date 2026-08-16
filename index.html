@@ -249,14 +249,66 @@
     .comp-card.problem .num { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
     .comp-card.solution .num { background: rgba(113, 112, 255, 0.15); color: var(--accent); }
 
-    /* Architecture */
+    /* Architecture - Beautiful SVG Flow Diagram */
     .arch-diagram {
-      background: var(--bg-surface); border: 1px solid var(--border-standard);
-      border-radius: var(--radius-xl); padding: var(--space-8);
-      overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6;
-      color: var(--text-secondary);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-standard);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      overflow-x: auto;
     }
-    .arch-diagram code { white-space: pre; display: block; }
+    .arch-diagram svg {
+      display: block;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .arch-node {
+      cursor: default;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .arch-node:hover {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    .arch-node:hover .node-label {
+      fill: #7170ff;
+    }
+    .arch-node:hover .node-subtitle {
+      fill: var(--text-secondary);
+    }
+    .arch-arrow {
+      stroke: #23252a;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+      transition: stroke 0.2s ease, stroke-width 0.2s ease;
+    }
+    .arch-node:hover + .arch-arrow,
+    .arch-arrow:hover {
+      stroke: #7170ff;
+      stroke-width: 2.5;
+    }
+    .node-title { font-family: var(--font-primary); font-weight: 590; font-size: 14px; text-anchor: middle; }
+    .node-subtitle { font-family: var(--font-mono); font-size: 11px; text-anchor: middle; fill: #62666d; }
+    .node-label { font-family: var(--font-primary); font-weight: 510; font-size: 12px; text-anchor: middle; transition: fill 0.2s ease; }
+    .node-desc { font-family: var(--font-mono); font-size: 10px; text-anchor: middle; fill: #62666d; }
+    .arch-flow-label {
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 510;
+      fill: #8a8f98;
+      text-anchor: middle;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .arch-node, .arch-arrow { transition: none; }
+    }
+    @media (max-width: 768px) {
+      .node-title { font-size: 12px; }
+      .node-subtitle { font-size: 10px; }
+      .node-label { font-size: 11px; }
+      .node-desc { font-size: 9px; }
+    }
 
     .component-grid { display: grid; gap: var(--space-5); margin-top: var(--space-12); }
     @media (min-width: 640px) { .component-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -404,7 +456,7 @@
         AI Infrastructure Incident Investigator
       </div>
       <h1 id="hero-title" class="display-md">Tell me what happened to my infrastructure while I was away</h1>
-      <p class="body-lg">Not a list of 183 alerts. One concise morning report — what mattered, why it happened, and what to do about it.</p>
+      <p class="body-lg">Not a list of 183 alerts. One concise morning report - what mattered, why it happened, and what to do about it.</p>
       <div class="hero-actions">
         <a href="https://github.com/Pamawas" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
         <a href="#quick-start" class="btn btn-ghost">Quick Start</a>
@@ -447,20 +499,20 @@
           <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Before Pamawas</h3>
           <ul class="comp-list">
             <li><span class="num">1</span><span>2,300+ raw alerts overnight from Grafana, Prometheus, Loki</span></li>
-            <li><span class="num">2</span><span>Alert fatigue — engineers ignore or mute notifications</span></li>
-            <li><span class="num">3</span><span>Manual RCA takes hours — digging through dashboards, logs, deployments</span></li>
-            <li><span class="num">4</span><span>No shared understanding — each engineer sees a different slice</span></li>
+            <li><span class="num">2</span><span>Alert fatigue - engineers ignore or mute notifications</span></li>
+            <li><span class="num">3</span><span>Manual RCA takes hours - digging through dashboards, logs, deployments</span></li>
+            <li><span class="num">4</span><span>No shared understanding - each engineer sees a different slice</span></li>
             <li><span class="num">5</span><span>Confident wrong answers from black-box AI tools</span></li>
           </ul>
         </article>
         <article class="comp-card card solution">
           <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> After Pamawas</h3>
           <ul class="comp-list">
-            <li><span class="num">1</span><span>~17 correlated incidents — time-window + service/label grouping</span></li>
-            <li><span class="num">2</span><span>One morning digest — Discord, Telegram, or Email</span></li>
+            <li><span class="num">1</span><span>~17 correlated incidents - time-window + service/label grouping</span></li>
+            <li><span class="num">2</span><span>One morning digest - Discord, Telegram, or Email</span></li>
             <li><span class="num">3</span><span>Bounded LLM investigator pulls PromQL, LogQL, deployment data on demand</span></li>
             <li><span class="num">4</span><span>Every finding typed: FACT, LIKELY_CAUSE, HYPOTHESIS, UNKNOWN</span></li>
-            <li><span class="num">5</span><span>Read-only — zero autonomous remediation, full audit trail</span></li>
+            <li><span class="num">5</span><span>Read-only - zero autonomous remediation, full audit trail</span></li>
           </ul>
         </article>
       </div>
@@ -476,32 +528,140 @@
         <p class="body">Deterministic correlation first. Bounded LLM investigation second. Read-only always.</p>
       </header>
       <div class="arch-diagram" role="img" aria-label="Architecture diagram showing data flow from webhooks through ingest, correlation, investigation, to delivery">
-<code>Grafana ──webhook──┐
-Prometheus ─────────┤
-Loki ───────────────┤
-Generic Webhook ────┤
-                    ▼
-            ┌───────────────┐
-            │  Ingest API   │  (Go) — Normalize → Store
-            └───────┬───────┘
-                    ▼
-            ┌───────────────┐
-            │ PostgreSQL    │  — Events, Incidents, Evidence
-            └───────┬───────┘
-                    ▼
-            ┌───────────────┐
-            │  Correlator   │  (Go) — Deterministic grouping
-            │  (time + svc) │
-            └───────┬───────┘
-                    ▼
-            ┌───────────────┐
-            │ Investigator  │  (Python) — Bounded tool-calling LLM
-            │  (LLM agent)  │     Tools: PromQL, LogQL, DB, Deployments
-            └───────┬───────┘
-                    ▼
-            ┌───────────────┐
-            │  Delivery     │  (Go) — Discord, Telegram, Email
-            └───────────────┘</code>
+        <svg viewBox="0 0 1500 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <path d="M0,0 L10,3.5 L0,7 Z" fill="#23252a"/>
+            </marker>
+            <linearGradient id="gradSource" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#28282c"/>
+              <stop offset="100%" stop-color="#191a1b"/>
+            </linearGradient>
+            <linearGradient id="gradIngest" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(113,112,255,0.12)"/>
+              <stop offset="100%" stop-color="rgba(113,112,255,0.04)"/>
+            </linearGradient>
+            <linearGradient id="gradDB" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(59,130,246,0.12)"/>
+              <stop offset="100%" stop-color="rgba(59,130,246,0.04)"/>
+            </linearGradient>
+            <linearGradient id="gradInvestigator" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(245,158,11,0.12)"/>
+              <stop offset="100%" stop-color="rgba(245,158,11,0.04)"/>
+            </linearGradient>
+            <linearGradient id="gradDelivery" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(16,185,129,0.12)"/>
+              <stop offset="100%" stop-color="rgba(16,185,129,0.04)"/>
+            </linearGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(0,0,0,0.3)"/>
+            </filter>
+          </defs>
+
+          <!-- Sources row -->
+          <g class="arch-node" transform="translate(60, 40)">
+            <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
+            <text x="70" y="28" class="node-title" fill="#8a8f98">Grafana</text>
+            <text x="70" y="46" class="node-subtitle">webhook</text>
+            <text x="70" y="68" class="node-label" fill="#d0d6e0">Metrics & Alerts</text>
+          </g>
+          <g class="arch-node" transform="translate(60, 140)">
+            <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
+            <text x="70" y="28" class="node-title" fill="#8a8f98">Prometheus</text>
+            <text x="70" y="46" class="node-subtitle">metrics</text>
+            <text x="70" y="68" class="node-label" fill="#d0d6e0">Time-Series DB</text>
+          </g>
+          <g class="arch-node" transform="translate(60, 240)">
+            <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
+            <text x="70" y="28" class="node-title" fill="#8a8f98">Loki</text>
+            <text x="70" y="46" class="node-subtitle">logs</text>
+            <text x="70" y="68" class="node-label" fill="#d0d6e0">Log Aggregation</text>
+          </g>
+          <g class="arch-node" transform="translate(60, 340)">
+            <rect x="0" y="0" width="140" height="80" rx="12" fill="url(#gradSource)" stroke="#23252a" stroke-width="1.5" filter="url(#shadow)"/>
+            <text x="70" y="28" class="node-title" fill="#8a8f98">Generic</text>
+            <text x="70" y="46" class="node-subtitle">webhook</text>
+            <text x="70" y="68" class="node-label" fill="#d0d6e0">Any JSON Source</text>
+          </g>
+
+          <!-- Arrow from sources to ingest -->
+          <path class="arch-arrow" d="M200, 80 C260, 80 300, 180 360, 180" />
+          <path class="arch-arrow" d="M200, 180 C260, 180 300, 180 360, 180" />
+          <path class="arch-arrow" d="M200, 280 C260, 280 300, 180 360, 180" />
+          <path class="arch-arrow" d="M200, 380 C260, 380 300, 180 360, 180" />
+
+          <!-- Ingest API -->
+          <g class="arch-node" transform="translate(360, 140)">
+            <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradIngest)" stroke="#7170ff" stroke-width="2" filter="url(#shadow)"/>
+            <text x="90" y="32" class="node-title" fill="#7170ff">Ingest API</text>
+            <text x="90" y="52" class="node-subtitle">Go Service</text>
+            <text x="90" y="76" class="node-label" fill="#d0d6e0">Normalize & Store</text>
+            <text x="90" y="96" class="node-desc">Validates → Enriches → Persists</text>
+          </g>
+
+          <!-- Arrow to DB -->
+          <path class="arch-arrow" d="M540, 200 C570, 200 600, 200 630, 200" />
+
+          <!-- PostgreSQL -->
+          <g class="arch-node" transform="translate(630, 140)">
+            <rect x="0" y="0" width="160" height="120" rx="16" fill="url(#gradDB)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+            <!-- Database cylinder icon -->
+            <ellipse cx="80" cy="20" rx="50" ry="12" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+            <path d="M30,20 L30,100" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+            <path d="M130,20 L130,100" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+            <ellipse cx="80" cy="100" rx="50" ry="12" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+            <text x="80" y="40" class="node-title" fill="#3b82f6">PostgreSQL</text>
+            <text x="80" y="60" class="node-subtitle">Events, Incidents</text>
+            <text x="80" y="80" class="node-label" fill="#d0d6e0">Evidence Store</text>
+            <text x="80" y="100" class="node-desc">ACID + JSONB + Full-text</text>
+          </g>
+
+          <!-- Arrow to Correlator -->
+          <path class="arch-arrow" d="M790, 200 C820, 200 850, 200 880, 200" />
+
+          <!-- Correlator -->
+          <g class="arch-node" transform="translate(880, 140)">
+            <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradIngest)" stroke="#7170ff" stroke-width="2" filter="url(#shadow)"/>
+            <text x="90" y="32" class="node-title" fill="#7170ff">Correlator</text>
+            <text x="90" y="52" class="node-subtitle">Go Service</text>
+            <text x="90" y="76" class="node-label" fill="#d0d6e0">Deterministic Grouping</text>
+            <text x="90" y="96" class="node-desc">Time Window + Service/Labels</text>
+          </g>
+
+          <!-- Arrow to Investigator -->
+          <path class="arch-arrow" d="M1060, 200 C1090, 200 1120, 200 1150, 200" />
+
+          <!-- Investigator -->
+          <g class="arch-node" transform="translate(1150, 140)">
+            <rect x="0" y="0" width="180" height="120" rx="16" fill="url(#gradInvestigator)" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+            <text x="90" y="28" class="node-title" fill="#f59e0b">Investigator</text>
+            <text x="90" y="48" class="node-subtitle">Python LLM Agent</text>
+            <text x="90" y="72" class="node-label" fill="#d0d6e0">Bounded Tool-Calling</text>
+            <text x="90" y="92" class="node-desc">PromQL, LogQL, DB, Deployments</text>
+            <text x="90" y="110" class="node-desc">Outputs: FACT, LIKELY_CAUSE,</text>
+            <text x="90" y="124" class="node-desc">HYPOTHESIS, UNKNOWN</text>
+          </g>
+
+          <!-- Arrow to Delivery -->
+          <path class="arch-arrow" d="M1330, 200 C1360, 200 1390, 200 1420, 200" />
+
+          <!-- Delivery -->
+          <g class="arch-node" transform="translate(1420, 140)">
+            <rect x="0" y="0" width="160" height="120" rx="16" fill="url(#gradDelivery)" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+            <text x="80" y="32" class="node-title" fill="#10b981">Delivery</text>
+            <text x="80" y="52" class="node-subtitle">Go Service</text>
+            <text x="80" y="76" class="node-label" fill="#d0d6e0">Discord, Telegram, Email</text>
+            <text x="80" y="96" class="node-desc">Daily Digest + Immediate Alerts</text>
+          </g>
+
+          <!-- Flow labels -->
+          <text x="280" y="70" class="arch-flow-label">Webhooks</text>
+          <text x="450" y="130" class="arch-flow-label">Normalize</text>
+          <text x="710" y="130" class="arch-flow-label">Persist</text>
+          <text x="970" y="130" class="arch-flow-label">Correlate</text>
+          <text x="1240" y="130" class="arch-flow-label">Investigate</text>
+          <text x="1500" y="130" class="arch-flow-label">Deliver</text>
+        </svg>
       </div>
       <div class="component-grid" role="list" aria-label="Components">
         <a href="https://github.com/Pamawas/pamawas-ingest" target="_blank" rel="noopener" class="comp-link" role="listitem">
@@ -570,7 +730,7 @@ Generic Webhook ────┤
       <header class="section-header">
         <span class="label">Demo</span>
         <h2 id="demo-title" class="heading-1">Sample Morning Digest</h2>
-        <p class="body">What you actually receive — concise, evidence-based, uncertainty-aware</p>
+        <p class="body">What you actually receive - concise, evidence-based, uncertainty-aware</p>
       </header>
       <div class="demo-report" role="img" aria-label="Sample morning digest report">
 🌅 Good morning.
@@ -602,7 +762,7 @@ No critical outage occurred.</div>
         </article>
         <article class="evidence-card unknown" role="listitem" style="grid-column: span 4;">
           <div class="evidence-type">UNKNOWN</div>
-          <p class="evidence-desc">Insufficient evidence — stated explicitly rather than guessed</p>
+          <p class="evidence-desc">Insufficient evidence - stated explicitly rather than guessed</p>
         </article>
       </div>
     </div>
@@ -694,7 +854,7 @@ cd pamawas-schema && go run ./cmd/migrate
       <header class="section-header">
         <span class="label">Metrics</span>
         <h2 id="metrics-title" class="heading-1">Success Metrics We Track</h2>
-        <p class="body">Not vanity metrics — the signals that tell us if this actually helps.</p>
+        <p class="body">Not vanity metrics - the signals that tell us if this actually helps.</p>
       </header>
       <div class="metrics-grid" role="list" aria-label="Success metrics">
         <article class="metric-card" role="listitem">
