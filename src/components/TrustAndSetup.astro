@@ -1,7 +1,7 @@
 ---
 const boundaries = [
-  ['Read infrastructure state', 'Prometheus, Loki, Kubernetes, PostgreSQL, and deployment history.'],
-  ['Preserve provenance', 'Every query, observation, evidence class, and confidence statement is retained.'],
+  ['Read configured evidence sources', 'Bounded Prometheus and Loki queries, related incidents, and available deployment metadata.'],
+  ['Preserve provenance', 'Runs, bounded tool summaries, evidence classes, confidence, and contract versions remain traceable.'],
   ['State uncertainty', 'Findings are typed as fact, likely cause, hypothesis, or unknown.'],
 ];
 ---
@@ -10,7 +10,7 @@ const boundaries = [
     <header class="section-heading reveal-item">
       <p class="eyebrow">The trust boundary</p>
       <h2 id="trust-title">Useful access.<br />No control plane.</h2>
-      <p>Pamawas investigates with a curated context window and explicit tools. It explains and recommends; engineers decide and act.</p>
+      <p>Pamawas investigates with bounded context and typed tools. Missing integrations return unavailable; insufficient evidence returns unknown. Engineers decide and act.</p>
     </header>
     <div class="trust-content">
       <div class="permission-line reveal-item">
@@ -40,6 +40,8 @@ const boundaries = [
       <header><span>Start the local stack</span><button id="copy-code-btn" type="button" aria-label="Copy quick start command" title="Copy command"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="1"/><path d="M16 8V5H5v11h3"/></svg></button></header>
       <pre id="quickstart-code"><code><span>git clone</span> https://github.com/Pamawas/pamawas-infra.git
 <span>cd</span> pamawas-infra/docker-compose
+<span>cp</span> .env.example .env
+<span># edit</span> .env with your local keys
 <span>docker compose</span> up -d</code></pre>
       <footer><span><i></i> Docker Compose</span><span>Local · inspectable · yours</span></footer>
       <p id="copy-status" class="sr-only" aria-live="polite"></p>

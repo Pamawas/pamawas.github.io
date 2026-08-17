@@ -1,15 +1,16 @@
 ---
 const steps = [
-  { n: '01', title: 'Normalize', stat: '2,300+', body: 'Grafana, Prometheus, Loki, and deployment events enter one shared evidence model.', meta: 'Deterministic input' },
-  { n: '02', title: 'Correlate', stat: '~17', body: 'Time, service topology, and labels collapse duplicate symptoms into incidents.', meta: 'Deterministic grouping' },
-  { n: '03', title: 'Investigate', stat: '1 brief', body: 'A bounded agent queries approved sources, classifies certainty, and stops.', meta: 'Read-only AI' },
+  { n: '01', title: 'Normalize', stat: '2,300', body: 'Authenticated Grafana and generic webhook events enter one normalized event model.', meta: 'Illustrative input' },
+  { n: '02', title: 'Correlate', stat: '17', body: 'Versioned time-window, service, and identity-label rules group compatible events into incidents.', meta: 'Illustrative output' },
+  { n: '03', title: 'Investigate', stat: '1 digest', body: 'A bounded agent queries configured sources, classifies certainty, and returns unknown when evidence is insufficient.', meta: 'Evidence first' },
 ];
 ---
 <section id="outcome" class="outcome-section" aria-labelledby="outcome-title">
   <div class="shell outcome-grid reveal-item">
     <header class="section-heading">
       <p class="eyebrow">The operational shift</p>
-      <h2 id="outcome-title">Wake up to a conclusion,<br />not a queue.</h2>
+      <h2 id="outcome-title">Wake up to evidence,<br />not an alert queue.</h2>
+      <p>Illustrative scenario based on the project success target, not a production benchmark.</p>
     </header>
     <div class="outcome-comparison">
       <div class="outcome-before">
@@ -21,7 +22,7 @@ const steps = [
       <div class="outcome-after">
         <span class="data-label">With Pamawas · 06:00</span>
         <strong>17</strong>
-        <p>incidents, one prioritized brief, evidence attached.</p>
+        <p>incidents in one prioritized daily digest, evidence attached.</p>
         <div class="result-line"><span>INC-892</span><b>Likely cause identified</b><small>87%</small></div>
       </div>
     </div>
@@ -33,7 +34,7 @@ const steps = [
     <header class="section-heading reveal-item">
       <p class="eyebrow">How it works</p>
       <h2 id="workflow-title">Structure first.<br />Reason second.</h2>
-      <p>Mechanical grouping reduces the search space before a model is allowed to interpret anything.</p>
+      <p>Versioned correlation rules reduce the search space before a model is allowed to interpret anything. The figures shown are illustrative.</p>
     </header>
     <ol class="workflow-list">
       {steps.map((step, index) => (

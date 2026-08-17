@@ -5,14 +5,14 @@
         <p class="eyebrow">Evidence, not inference theater</p>
         <h2 id="investigation-title">Every conclusion keeps its receipts.</h2>
       </div>
-      <p>Pamawas separates observations from interpretation and names what the available evidence cannot prove.</p>
+      <p>Pamawas separates observations from interpretation and records an explicit unknown when configured evidence sources are unavailable, contradictory, or insufficient.</p>
     </header>
 
     <div class="workspace reveal-item">
       <div class="workspace-rail">
         <div class="workspace-brand"><span class="status-dot"></span>Pamawas / Incident</div>
         <dl>
-          <div><dt>Incident</dt><dd>INC-892</dd></div>
+          <div><dt>Example</dt><dd>INC-892</dd></div>
           <div><dt>Service</dt><dd>checkout-service</dd></div>
           <div><dt>Window</dt><dd>19 minutes</dd></div>
           <div><dt>Severity</dt><dd class="danger">High</dd></div>
@@ -28,19 +28,19 @@
         </div>
 
         <div id="panel-brief" class="investigation-panel" role="tabpanel" aria-labelledby="tab-brief" tabindex="0">
-          <header class="panel-title"><div><span>Morning brief · generated 02:06 UTC</span><h3>Checkout errors followed a connection ceiling.</h3></div><div class="confidence-ring"><strong>87</strong><span>confidence</span></div></header>
+          <header class="panel-title"><div><span>Representative daily digest · demo data</span><h3>Checkout errors followed a connection ceiling.</h3></div><div class="confidence-ring"><strong>87</strong><span>example confidence</span></div></header>
           <p class="panel-summary">The checkout service produced a 500-error burst immediately after release v2.14.0. Database connections reached the configured limit at the same time. Traffic recovery ended the symptoms, but the pool configuration still needs review.</p>
           <div class="finding-list">
             <article><span class="evidence-type fact">Fact</span><p>PostgreSQL reported <code>100 / 100</code> active connections.</p><time>01:47:28</time></article>
             <article><span class="evidence-type fact">Fact</span><p>Release v2.14.0 completed 12 seconds before p99 latency crossed 2.5s.</p><time>01:47:00</time></article>
-            <article><span class="evidence-type likely">Likely</span><p>The new pool configuration exhausted connections under production load.</p><time>87%</time></article>
+            <article><span class="evidence-type likely">Likely cause</span><p>The new pool configuration exhausted connections under production load.</p><time>87%</time></article>
             <article><span class="evidence-type hypothesis">Hypothesis</span><p>Connection release timing may have changed in v2.14.0.</p><time>Unverified</time></article>
           </div>
           <div class="next-check"><span>Recommended first check</span><p>Compare <code>max_connections</code> with the v2.14.0 pool configuration.</p></div>
         </div>
 
         <div id="panel-timeline" class="investigation-panel" role="tabpanel" aria-labelledby="tab-timeline" tabindex="0" hidden>
-          <header class="panel-title"><div><span>Deterministic correlation</span><h3>42 signals reduced to one incident.</h3></div><strong class="reduction">97.6% less noise</strong></header>
+          <header class="panel-title"><div><span>Illustrative deterministic correlation</span><h3>42 example signals reduced to one incident.</h3></div><strong class="reduction">Demo data</strong></header>
           <ol class="timeline">
             <li><time>01:47:00</time><span>Deploy</span><p><b>checkout-service:v2.14.0</b> completed.</p></li>
             <li><time>01:47:12</time><span>Grafana</span><p>Checkout p99 latency exceeded <b>2.5 seconds</b>.</p></li>
@@ -55,7 +55,7 @@
             <li><span>01</span><div><code>promql.query(http_5xx_rate)</code><p>Observed a 340 req/s error spike.</p></div><b>132ms</b></li>
             <li><span>02</span><div><code>promql.query(pg_connections)</code><p>Observed 100 / 100 active connections.</p></div><b>96ms</b></li>
             <li><span>03</span><div><code>logql.query(pool_errors)</code><p>Found repeated connection pool timeouts.</p></div><b>418ms</b></li>
-            <li><span>04</span><div><code>k8s.get_deployment(checkout)</code><p>Observed v2.14.0 deployed at 01:47 UTC.</p></div><b>74ms</b></li>
+            <li><span>04</span><div><code>deployments.get_recent(checkout)</code><p>A configured deployment adapter reported v2.14.0 at 01:47 UTC.</p></div><b>74ms</b></li>
           </ol>
         </div>
       </div>

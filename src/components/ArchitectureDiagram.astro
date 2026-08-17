@@ -94,7 +94,7 @@ const { class: className = '' } = Astro.props;
           <ul class="stage-features">
             <li><span>✓</span> Ingests raw alert payloads</li>
             <li><span>✓</span> Validates & maps to unified schema</li>
-            <li><span>✓</span> Deduplication cache</li>
+            <li><span>✓</span> Durable idempotent ingestion</li>
           </ul>
         </div>
 
@@ -115,9 +115,9 @@ const { class: className = '' } = Astro.props;
           <h3 class="stage-heading">Evidence Vault</h3>
           <p class="stage-sub">pamawas-schema</p>
           <ul class="stage-features">
-            <li><span>✓</span> ACID storage with JSONB indexing</li>
-            <li><span>✓</span> Append-only raw incident archive</li>
-            <li><span>✓</span> Full-text search & audit history</li>
+            <li><span>✓</span> PostgreSQL-backed durable state</li>
+            <li><span>✓</span> Typed incident and evidence records</li>
+            <li><span>✓</span> Traceable provenance and reviews</li>
           </ul>
         </div>
       </div>
@@ -147,8 +147,8 @@ const { class: className = '' } = Astro.props;
           <p class="stage-sub">pamawas-correlator</p>
           <ul class="stage-features">
             <li><span>✓</span> Sliding time-window grouping</li>
-            <li><span>✓</span> Service topology & label matching</li>
-            <li><span>✓</span> Deterministic root incident tagging</li>
+            <li><span>✓</span> Strong service & identity-label rules</li>
+            <li><span>✓</span> Versioned deterministic grouping</li>
           </ul>
         </div>
 
@@ -169,14 +169,15 @@ const { class: className = '' } = Astro.props;
           <h3 class="stage-heading">Investigator</h3>
           <p class="stage-sub">pamawas-investigator</p>
           <ul class="stage-features">
-            <li><span>✓</span> PromQL, LogQL, K8s & git diffs</li>
+            <li><span>✓</span> PromQL, LogQL & configured adapters</li>
             <li><span>✓</span> Read-only bounded tool queries</li>
             <li><span>✓</span> Categorized confidence findings</li>
           </ul>
           <div class="evidence-types-mini">
             <span class="chip chip-fact">FACT</span>
-            <span class="chip chip-likely">LIKELY</span>
+            <span class="chip chip-likely">LIKELY CAUSE</span>
             <span class="chip chip-hypo">HYPOTHESIS</span>
+            <span class="chip">UNKNOWN</span>
           </div>
         </div>
 
