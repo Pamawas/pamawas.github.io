@@ -6,18 +6,18 @@ import InvestigationWorkspace from '../components/InvestigationWorkspace.astro';
 import TrustAndSetup from '../components/TrustAndSetup.astro';
 ---
 
-<Layout title="Pamawas — Know what happened before the alerts pile up" description="Pamawas groups infrastructure alerts into traceable incidents and uses bounded, read-only investigation to produce evidence-classified findings with explicit uncertainty.">
+<Layout title="Pamawas — Evidence-backed incident intelligence" description="Pamawas turns authenticated infrastructure events into traceable incidents, bounded investigations, evidence-backed reports, and measurable human feedback.">
   <a class="fixed top-2.5 left-2.5 z-[100] -translate-y-[160%] bg-ink px-3.5 py-2.5 text-canvas focus:translate-y-0" href="#main">Skip to content</a>
   <header class="site-header fixed inset-x-0 top-0 z-50 h-[62px] text-night-text transition-all md:h-[72px]">
     <nav class="mx-auto flex h-full w-[min(calc(100%-28px),1200px)] items-center justify-between gap-6 md:w-[min(calc(100%-48px),1200px)]" aria-label="Primary navigation">
       <a class="inline-flex items-center gap-2.5 font-semibold" href="#main" aria-label="Pamawas home">
-        <span class="flex h-6 w-6 items-end gap-[3px]" aria-hidden="true"><i class="h-2.5 w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent-bright"></i><i class="h-[18px] w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent-bright"></i><i class="h-6 w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent-bright"></i></span>
+        <span class="flex h-6 w-6 items-end gap-[3px]" aria-hidden="true"><i class="h-2.5 w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent"></i><i class="h-[18px] w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent"></i><i class="h-6 w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent"></i></span>
         <span>Pamawas</span>
       </a>
       <div class="hidden gap-8 text-[13px] text-[#b8beb3] md:flex [&_a]:transition-colors [&_a:hover]:text-white">
-        <a href="#outcome">Outcome</a>
+        <a href="#workflow">Workflow</a>
         <a href="#investigation">Evidence</a>
-        <a href="#trust">Trust</a>
+        <a href="#trust">Reliability</a>
       </div>
       <div class="flex items-center gap-2">
         <button id="theme-toggle" class="icon-button grid size-[38px] cursor-pointer place-items-center rounded-ui border border-[#3b4338] bg-transparent text-night-text transition hover:border-[#788176]" type="button" aria-label="Switch to light theme" title="Switch theme">
@@ -38,7 +38,7 @@ import TrustAndSetup from '../components/TrustAndSetup.astro';
 
   <footer class="border-t border-[#30362e] bg-night py-8 text-night-text">
     <div class="mx-auto grid w-[min(calc(100%-28px),1200px)] items-center gap-4 md:w-[min(calc(100%-48px),1200px)] md:grid-cols-[1fr_1fr_auto] md:gap-8">
-      <a class="inline-flex items-center gap-2.5 font-semibold" href="#main"><span class="flex h-6 w-6 items-end gap-[3px]" aria-hidden="true"><i class="h-2.5 w-[5px] skew-x-[-14deg] bg-accent-bright"></i><i class="h-[18px] w-[5px] skew-x-[-14deg] bg-accent-bright"></i><i class="h-6 w-[5px] skew-x-[-14deg] bg-accent-bright"></i></span><span>Pamawas</span></a>
+      <a class="inline-flex items-center gap-2.5 font-semibold" href="#main"><span class="flex h-6 w-6 items-end gap-[3px]" aria-hidden="true"><i class="h-2.5 w-[5px] skew-x-[-14deg] bg-accent"></i><i class="h-[18px] w-[5px] skew-x-[-14deg] bg-accent"></i><i class="h-6 w-[5px] skew-x-[-14deg] bg-accent"></i></span><span>Pamawas</span></a>
       <p class="m-0 text-xs text-night-muted">Open infrastructure intelligence, built in public.</p>
       <div class="flex gap-6 text-xs"><a href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub</a><a href="#quick-start">Run locally</a></div>
     </div>

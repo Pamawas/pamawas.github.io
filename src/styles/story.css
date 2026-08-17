@@ -1,20 +1,4 @@
-.outcome-section { padding:120px 0; }
-.outcome-grid { display:grid; grid-template-columns:.75fr 1.25fr; gap:90px; align-items:center; }
-.outcome-comparison { display:grid; grid-template-columns:1fr 1fr; min-height:390px; }
-.outcome-comparison > div { position:relative; padding:34px; overflow:hidden; }
-.outcome-before { background:var(--surface-soft); color:var(--ink-2); border:1px solid var(--line); border-right:0; border-radius:12px 0 0 12px; }
-.outcome-after { background:var(--dark); color:var(--light); border-radius:0 12px 12px 0; box-shadow:none; }
-.data-label { font-family:var(--font-mono); font-size:9px; text-transform:uppercase; }
-.outcome-comparison strong { display:block; margin-top:52px; font-family:var(--font-mono); font-size:72px; font-weight:300; line-height:1; }
-.outcome-comparison p { max-width:250px; margin:16px 0 0; font-size:14px; }
-.outcome-before p { color:var(--ink-3); }.outcome-after strong { color:var(--accent-bright); }
-.noise-lines { position:absolute; right:30px; bottom:35px; left:34px; display:grid; gap:7px; opacity:.35; }
-.noise-lines i { height:4px; background:var(--ink-3); }.noise-lines i:nth-child(2){width:72%}.noise-lines i:nth-child(3){width:88%}.noise-lines i:nth-child(4){width:56%}.noise-lines i:nth-child(5){width:78%}
-.result-line { position:absolute; right:28px; bottom:30px; left:28px; display:grid; grid-template-columns:auto 1fr auto; gap:12px; padding-top:14px; border-top:1px solid #394037; font-family:var(--font-mono); font-size:9px; }.result-line b { font-weight:400; }.result-line small { color:var(--accent-bright); }
-.workflow-section { padding:120px 0; background:var(--surface); }
-.workflow-layout { display:grid; grid-template-columns:.72fr 1.28fr; gap:110px; }
-.workflow-list { margin:0; padding:0; list-style:none; border-top:1px solid var(--line); }
-.workflow-step { min-height:180px; display:grid; grid-template-columns:50px 1fr auto; gap:26px; align-items:start; padding:30px 0; border-bottom:1px solid var(--line); }
-.step-number { color:var(--ink-3); font-family:var(--font-mono); font-size:10px; }.workflow-step h3 { margin:0; font-size:20px; font-weight:600; }.workflow-step p { max-width:470px; margin:9px 0 22px; color:var(--ink-2); font-size:14px; }.workflow-step small { color:var(--accent); font-family:var(--font-mono); font-size:9px; text-transform:uppercase; }.workflow-step > strong { color:var(--accent); font-family:var(--font-mono); font-size:22px; font-weight:500; white-space:nowrap; }
-.investigation-section { padding:120px 0; background:var(--dark); color:var(--light); }
-.investigation-heading { display:grid; grid-template-columns:1.25fr .75fr; gap:90px; align-items:end; margin-bottom:58px; }.investigation-heading > p { margin:0; color:var(--muted); font-size:15px; line-height:1.7; }.investigation-heading .section-heading h2 { max-width:720px; }
+.workflow-section{padding:120px 0;background:var(--color-canvas)}
+.workflow-track{display:grid;grid-template-columns:repeat(5,1fr);margin:70px 0 0;padding:0;border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);list-style:none}
+.workflow-card{position:relative;min-width:0;padding:26px 22px 28px;border-right:1px solid var(--color-line)}.workflow-card:last-child{border-right:0}.workflow-card::before{position:absolute;top:-4px;left:22px;width:7px;height:7px;border-radius:50%;background:var(--color-accent);content:""}.workflow-number{color:var(--color-ink-faint);font-family:var(--font-mono);font-size:10px}.workflow-card h3{margin:36px 0 0;font-size:19px}.workflow-card p{min-height:112px;margin:10px 0 24px;color:var(--color-ink-muted);font-size:13px;line-height:1.65}.workflow-card code{color:var(--color-accent-hover);font-size:9px}
+.principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:70px;background:var(--color-line);border:1px solid var(--color-line)}.principle-card{min-height:250px;padding:32px;background:var(--color-panel)}.principle-card>span{color:var(--color-accent);font-family:var(--font-mono);font-size:11px}.principle-card h3{margin:54px 0 0;font-size:21px}.principle-card p{margin:12px 0 0;color:var(--color-ink-muted);font-size:14px;line-height:1.7}

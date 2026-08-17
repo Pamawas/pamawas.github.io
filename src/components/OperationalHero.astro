@@ -1,43 +1,37 @@
 ---
 const evidence = [
-  ['01:47:12', 'Deploy', 'checkout:v2.14.0 completed'],
-  ['01:47:28', 'Metric', 'DB connections reached 100 / 100'],
-  ['01:48:02', 'Logs', 'pool exhausted · 84 occurrences'],
+  ['FACT', 'Prometheus', 'Active connections reached the configured maximum.'],
+  ['FACT', 'Loki', 'Connection pool timeouts increased in the same window.'],
+  ['LIKELY CAUSE', 'Investigator', 'Pool exhaustion likely caused the request failures.'],
+  ['UNKNOWN', 'Deployment adapter', 'Change correlation is unavailable until a real adapter is configured.'],
 ];
 ---
 <section class="hero" aria-labelledby="hero-title">
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="shell hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow"><span></span> Open source incident intelligence</p>
-      <h1 id="hero-title">Pamawas.<br /><em>Know what happened.</em></h1>
-      <p class="hero-body">Pamawas groups alert floods into traceable incidents, then produces evidence-classified findings: what happened, what may have caused it, and what an engineer should check next.</p>
+    <div class="hero-copy reveal-item">
+      <p class="eyebrow">Open-source incident intelligence</p>
+      <h1 id="hero-title">From alert noise<br/><em>to evidence.</em></h1>
+      <p class="hero-body">Pamawas turns authenticated infrastructure events into traceable incidents, investigates through bounded read-only tools, and reports what is known, likely, and still unknown.</p>
       <div class="hero-actions">
-        <a class="button button-primary" href="#investigation">Explore an investigation <span aria-hidden="true">↓</span></a>
-        <a class="button button-secondary" href="#quick-start">Run locally <span aria-hidden="true">→</span></a>
+        <a class="button button-primary" href="#workflow">Follow the workflow <span aria-hidden="true">↓</span></a>
+        <a class="button button-secondary" href="https://github.com/Pamawas" target="_blank" rel="noopener">Explore the code <span aria-hidden="true">↗</span></a>
       </div>
+      <ul class="hero-principles" aria-label="Core guarantees">
+        <li>Deterministic correlation</li><li>No fabricated evidence</li><li>Exactly-once durable effects</li>
+      </ul>
     </div>
-
-    <article class="brief-shell" aria-label="Representative Pamawas incident brief">
-      <header class="brief-toolbar">
-        <div><span class="status-dot"></span><span>Representative example · INC-892</span></div>
-        <time>02:06 UTC</time>
-      </header>
-      <div class="brief-title-row">
-        <div><span class="severity">High</span><span class="confidence">87% confidence</span></div>
-        <h2>Checkout errors followed a connection ceiling.</h2>
-        <p>In this illustrative investigation, database pool exhaustion after release v2.14.0 is classified as the likely cause.</p>
+    <article class="signal-card reveal-item" aria-label="Illustrative investigation output">
+      <header><span><i></i> Representative output</span><code>irun_example</code></header>
+      <div class="signal-heading">
+        <div><span class="severity">HIGH</span><span class="state">completed</span></div>
+        <h2>Checkout failures followed a connection ceiling.</h2>
+        <p>Illustrative data—not a production benchmark.</p>
       </div>
-      <div class="evidence-list">
-        {evidence.map(([time, type, text]) => <div><time>{time}</time><span>{type}</span><p>{text}</p></div>)}
+      <div class="signal-list">
+        {evidence.map(([type, source, text]) => <div><span class={`signal-type ${type.toLowerCase().replace(' ', '-')}`}>{type}</span><p>{text}</p><small>{source}</small></div>)}
       </div>
-      <footer class="brief-footer">
-        <div><strong>42</strong><span>alerts correlated</span></div>
-        <div><strong>1</strong><span>incident</span></div>
-        <div><strong>0</strong><span>write actions</span></div>
-      </footer>
+      <footer><span>4 evidence items</span><span>0 write actions</span><span>provenance linked</span></footer>
     </article>
-  </div>
-  <div class="shell proof-strip" aria-label="Product principles">
-    <span>Deterministic correlation</span><span>Bounded investigation</span><span>Explicit unknown outcomes</span><span>MIT licensed</span>
   </div>
 </section>

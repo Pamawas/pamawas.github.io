@@ -1,16 +1,5 @@
-:root { --ease-out:cubic-bezier(.22,1,.36,1); }
-.button,.icon-button,.nav-github,.brief-shell,.quick-command { transition:border-color .15s ease,background-color .15s ease,color .15s ease; }
-.button-primary:hover,.button-light:hover { background:var(--color-accent-hover,#17b39d); border-color:var(--color-accent-hover,#17b39d); }
-.button-secondary:hover,.nav-github:hover,.icon-button:hover { border-color:var(--color-night-text); }
-.brief-shell:hover,.quick-command:hover { border-color:rgb(31 209 184 / .4); }
-.investigation-tabs button { transition:color .15s ease,border-color .15s ease; }
-.finding-list article,.timeline li,.trace-list li { transition:background-color .15s ease; }
-.finding-list article:hover,.timeline li:hover,.trace-list li:hover { background:var(--color-soft); }
-@keyframes rise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
-.motion-ready .hero-copy>* { animation:rise .2s ease-out both; }
-.motion-ready .hero-copy>:nth-child(2){animation-delay:.06s}
-.motion-ready .hero-copy>:nth-child(3){animation-delay:.12s}
-.motion-ready .hero-copy>:nth-child(4){animation-delay:.18s}
-.motion-ready .brief-shell{animation:rise .2s ease-out .18s both}
-.motion-ready .reveal-item { opacity:0; transform:translateY(8px); }
-.motion-ready .reveal-item.is-visible { opacity:1; transform:none; transition:opacity .2s ease-out var(--reveal-delay,0ms),transform .2s ease-out var(--reveal-delay,0ms); }
+.button,.investigation-tabs button,.quick-command button,.signal-card,.principle-card{transition:color .15s ease,background-color .15s ease,border-color .15s ease}
+.button-secondary:hover,.quick-command button:hover{border-color:var(--color-accent);color:var(--color-accent)}.signal-card:hover{border-color:rgb(25 184 153/.5)}.principle-card:hover{background:var(--color-soft)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.motion-ready .hero-copy{animation:rise .35s ease-out both}.motion-ready .signal-card{animation:rise .35s ease-out .1s both}.motion-ready .reveal-item:not(.hero-copy):not(.signal-card){opacity:0;transform:translateY(10px)}.motion-ready .reveal-item.is-visible{opacity:1;transform:none;transition:opacity .3s ease-out var(--reveal-delay,0ms),transform .3s ease-out var(--reveal-delay,0ms)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.hero-glow{display:none}}
