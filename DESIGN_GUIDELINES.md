@@ -1,237 +1,200 @@
-# Pamawas Landing Page Design Guideline
+# Pamawas Landing Page Redesign Blueprint
 
 Date: 2026-08-17
-Scope: Marketing landing page UX/UI direction for a modern minimalist, premium-feel first impression.
+Status: Approved for full redesign from the ground up.
+Objective: Replace the current UI with a modern minimalist, premium landing experience that feels distinct, confident, and high-trust.
 
-## 1. Design Objective
+## 1. Problem Statement
 
-Create a landing page that feels calm, confident, and technical at first glance while clearly answering:
+The current UI reads as functional but visually dated. The main issues are:
 
-1. What Pamawas is.
-2. Who it is for.
-3. Why it is trustworthy.
-4. What to do next.
+1. Legacy visual language: too many boxed regions and thin separators create an older enterprise look.
+2. Over-dense information framing: many parallel elements compete for attention.
+3. Weak premium signal: polish exists, but the overall mood is more utilitarian than aspirational.
+4. Insufficient narrative tension: users see structure, but not a compelling first-impression hook.
 
-Success criteria:
+This document assumes we can redesign layout, hierarchy, typography, color system, component styling, and section flow without preserving old patterns.
 
-- A visitor understands the product value in under 5 seconds.
-- The visual hierarchy is obvious without reading every line.
-- The page feels premium through restraint, spacing, and clarity, not decoration.
+## 2. Redesign North Star
 
-## 2. Research Basis
+Design for the sentence: "This feels like a serious product from a serious team."
 
-This guideline is based on established UX principles:
+The page must feel:
 
-1. Visual hierarchy through contrast, scale, and grouping.
-   - NNGroup: https://www.nngroup.com/articles/visual-hierarchy-ux-definition/
-2. Aesthetic-usability effect (better visuals increase perceived usability/trust).
-   - Laws of UX: https://lawsofux.com/aesthetic-usability-effect/
-3. Von Restorff effect (one distinctive element is most memorable).
-   - Laws of UX: https://lawsofux.com/von-restorff-effect/
+1. Modern: clear hierarchy, generous whitespace, deliberate scale.
+2. Minimalist: fewer elements, stronger intent per element.
+3. Premium: refined typography, controlled color, purposeful motion.
+4. Technical: trustworthy evidence and operational precision.
 
-## 3. Core Visual Strategy
+## 3. Brand Mood Direction
 
-Use one dominant message, one dominant action, and one dominant visual anchor.
+Use one coherent art direction, not mixed aesthetics.
 
-1. Dominant message:
-   - Outcome-first headline.
-   - No jargon in the first line.
-2. Dominant action:
-   - One primary CTA only.
-   - One secondary CTA maximum.
-3. Dominant visual anchor:
-   - The incident brief panel is the hero focal object.
-   - Avoid competing hero visuals.
+Recommended direction:
 
-Rule: If everything is emphasized, nothing is emphasized.
+1. Editorial-tech: large typography and sharp copy with restrained UI chrome.
+2. Atmospheric neutral backgrounds: subtle gradients and texture, not flat blocks.
+3. Precision accents: one accent family used sparingly for key actions and data emphasis.
+4. Premium restraint: remove non-essential borders, badges, and visual noise.
 
-## 4. Information Hierarchy
+## 4. Structural Redesign (New IA)
 
-## 4.1 Above-the-fold order
+Replace current section rhythm with this narrative:
 
-1. Eyebrow: short category/context signal.
-2. Headline: 4-8 words, strong outcome statement.
-3. Subhead: one sentence explaining mechanism/value.
-4. CTA row: primary + secondary.
-5. Trust strip: one short line of proof (open source, read-only, evidence-backed).
-6. Hero artifact: representative incident brief.
+1. Hero: emotional hook + product value in one glance.
+2. Proof strip: trust anchors (read-only, evidence-backed, OSS).
+3. Outcome story: before vs after operations state.
+4. Product walkthrough: concise 3-step mechanism.
+5. Evidence UI showcase: one canonical investigation screen.
+6. Trust model: explicit safety boundaries.
+7. CTA close: choose path (explore demo or run locally).
 
-## 4.2 Section pattern (for all major sections)
+Rule: every section must earn its place by moving the story forward.
 
-Each section should contain:
+## 5. Visual System V2
 
-1. Section index + eyebrow.
-2. A single primary claim.
-3. Brief support copy (1-3 sentences).
-4. One structured artifact (grid, panel, table, timeline, or code block).
+## 5.1 Typography
 
-Each section should communicate one idea only.
+1. Keep one expressive display sans and one mono for technical data.
+2. Increase display contrast: larger hero headline and quieter surrounding text.
+3. Use fewer weights; rely on size and spacing for hierarchy.
+4. Avoid overuse of uppercase labels.
 
-## 5. Typography Guideline
+Type hierarchy target:
 
-1. Use one sans family + one mono family only.
-2. Limit hierarchy to 3 core tiers per section:
-   - Display
-   - Heading
-   - Body
-3. Keep headline weights lighter than typical SaaS pages to signal confidence.
-4. Keep body text comfortable and readable (line-height around 1.55-1.7).
-5. Avoid all-caps for long phrases; reserve uppercase for metadata labels only.
+1. Display: hero and section anchors.
+2. Heading: section claims.
+3. Body: concise explanation.
+4. Meta: labels, timestamps, and terminal hints.
 
-## 6. Color and Contrast Guideline
+## 5.2 Color
 
-1. Use one primary accent color for actions and emphasis.
-2. Use neutral surfaces to carry most layout structure.
-3. Reserve semantic colors strictly for meaning:
-   - Green: healthy/safe
-   - Amber: caution/uncertainty
-   - Red: critical/high severity
-4. Keep accent usage sparse so highlighted items remain memorable.
-5. Do not rely on color alone for meaning; reinforce with labels, icons, or text.
+1. Build around neutrals first; accent second.
+2. Keep one signature accent for interaction priority.
+3. Reserve semantic colors for operational meaning only.
+4. Ensure dark mode feels intentional, not inverted light mode.
 
-## 7. Spacing and Layout Rhythm
+## 5.3 Surfaces and Depth
 
-Premium feel is primarily a spacing discipline.
+1. Use fewer hard card boundaries.
+2. Introduce depth via tonal layering and soft shadows.
+3. Let one hero artifact carry the strongest depth treatment.
+4. Avoid repeating the same border style on all blocks.
 
-1. Increase whitespace around primary claims.
-2. Keep related content tightly grouped.
-3. Keep unrelated groups clearly separated.
-4. Use consistent vertical rhythm section-to-section.
-5. Avoid dense multi-column clusters unless comparison is the goal.
+## 5.4 Spacing
 
-Practical rhythm:
+1. Increase vertical breathing room between major sections.
+2. Compress related content within local groups.
+3. Establish a repeatable spacing scale and enforce it consistently.
+4. Use negative space as a premium signal, not filler.
 
-- Large gaps between sections.
-- Medium gaps between subsection blocks.
-- Small gaps for tightly related label/value content.
+## 6. Hero Redesign Spec
 
-## 8. Motion Guideline
+The hero must do three jobs in 5 seconds:
 
-Motion should clarify hierarchy and state change, never distract.
+1. State outcome: what the user gets.
+2. Suggest mechanism: why it works.
+3. Trigger action: where to click.
 
-1. Use one load-in choreography for hero only.
-2. Use subtle scroll-reveal for section blocks.
-3. Use modest hover lift/glow on interactive cards and buttons.
-4. Keep durations consistent (fast for micro, moderate for entrances).
-5. Respect reduced-motion preferences with near-static fallbacks.
+Hero composition:
 
-## 9. Copy Guideline
+1. Left: headline, subhead, CTA pair.
+2. Right: a redesigned evidence brief artifact.
+3. Bottom strip: concise trust markers.
 
-1. Lead with outcomes, then mechanism.
-2. Replace feature lists with evidence-backed results.
-3. Keep sentence length short to medium.
-4. Remove repeated claims across sections.
-5. Clearly distinguish:
-   - Fact
-   - Likely cause
-   - Hypothesis
-   - Unknown
+Hero copy style:
 
-Tone attributes:
+1. One punchy headline.
+2. One explanatory sentence.
+3. No dense paragraph blocks above the fold.
 
-- Calm
-- Technical
-- Precise
-- Honest about uncertainty
+## 7. Interaction and Motion
 
-## 10. Premium Minimalist Anti-Patterns
+Motion should communicate quality and focus, not novelty.
 
-Avoid:
+1. Use a staged entrance for hero only.
+2. Keep scroll reveal subtle and short.
+3. Add meaningful micro-feedback on CTA and tabs.
+4. Limit animation varieties to avoid visual inconsistency.
+5. Keep reduced-motion mode first-class.
 
-1. Too many accent colors.
-2. Multiple "primary" CTAs.
-3. Over-animated components competing for attention.
-4. Excess decorative gradients/shadows with no hierarchy purpose.
-5. Long blocks of generic marketing text above the fold.
-6. Heavy card borders everywhere that create visual noise.
+## 8. Content Strategy Rewrite
 
-## 11. Accessibility and Trust Baseline
+Rewrite copy around outcomes and proof.
 
-1. Maintain strong text/background contrast.
-2. Ensure keyboard navigability and visible focus states.
-3. Keep interactive targets comfortably tappable on mobile.
-4. Preserve semantic landmarks and heading order.
-5. Pair confidence statements with provenance or source context.
+1. Replace generic claims with measurable statements.
+2. Remove repeated concepts across sections.
+3. Keep each section to one clear promise.
+4. Clarify certainty states: fact, likely, unknown.
 
-## 12. Component-Level Application in This Project
+Tone model:
 
-## 12.1 Hero
+1. Calm
+2. Precise
+3. Technical
+4. Confident but non-hype
 
-Target outcomes:
+## 9. Premium Minimalist Rules
 
-1. Immediate understanding of value proposition.
-2. One memorable visual object.
-3. One obvious next step.
+Apply these non-negotiables:
 
-Apply to current hero:
+1. One visual focal point per viewport.
+2. One primary CTA per section.
+3. One accent family for emphasis.
+4. One dominant message per block.
 
-- Keep incident brief as focal object.
-- Tighten headline/subhead to a single clear promise.
-- Keep CTA pair minimal and unambiguous.
+Remove these anti-patterns:
 
-## 12.2 Workflow section
+1. Repetitive box outlines around every component.
+2. Over-labeled UI rows where typography can do the work.
+3. Multiple highlighted elements fighting for attention.
+4. Decorative effects without informational purpose.
 
-Target outcomes:
+## 10. Accessibility and Quality Gates
 
-1. Fast cognitive scan.
-2. Clear progression from noise to brief.
+Redesign is complete only if these pass:
 
-Apply:
+1. Contrast and readability pass in both themes.
+2. Keyboard navigation pass for all interactive controls.
+3. Reduced-motion pass.
+4. Mobile first-viewport comprehension pass.
+5. 5-second comprehension test with new users.
 
-- Keep 3-step structure.
-- Keep numbers visually strong.
-- Keep body copy short and concrete.
+## 11. Execution Plan
 
-## 12.3 Investigation and architecture sections
+## Phase 1: Visual Foundation
 
-Target outcomes:
+1. Replace color tokens with V2 palette.
+2. Replace typography scale and line-height system.
+3. Rebuild spacing scale and section rhythm.
 
-1. Convey technical depth without clutter.
-2. Preserve readability in dense information areas.
+## Phase 2: Layout and Components
 
-Apply:
+1. Redesign hero composition and brief artifact.
+2. Redesign workflow and showcase sections with reduced chrome.
+3. Redesign trust and CTA close with stronger hierarchy.
 
-- Use clear panel grouping.
-- Keep labels consistent.
-- Avoid adding new visual motifs that compete with hero language.
+## Phase 3: Motion and Polish
 
-## 12.4 Trust and quick start
+1. Harmonize motion timing and easing.
+2. Tune interactive states for clarity and tactility.
+3. Remove leftover V1 visual patterns.
 
-Target outcomes:
+## Phase 4: Validation
 
-1. Increase credibility.
-2. Reduce perceived adoption friction.
+1. Run usability checks (5-second and path-to-CTA).
+2. Run accessibility checks.
+3. Iterate based on test findings.
 
-Apply:
+## 12. Deliverable Definition
 
-- Keep trust principles concise and verifiable.
-- Keep quick start commands simple and copy-friendly.
+This redesign is done when:
 
-## 13. QA Checklist Before Shipping
-
-Run this checklist for each major iteration:
-
-1. 5-second test:
-   - Can a first-time visitor explain what Pamawas does?
-2. Squint test:
-   - Is one element clearly dominant above the fold?
-3. CTA test:
-   - Is exactly one primary action visually dominant?
-4. Noise audit:
-   - Remove any non-essential decoration.
-5. Mobile scan:
-   - Does first viewport still communicate value + action clearly?
-6. Accessibility check:
-   - Contrast, keyboard, reduced motion, semantic structure.
-
-## 14. Implementation Priority (Recommended)
-
-1. Refine hero message clarity and CTA hierarchy.
-2. Tighten spacing rhythm between all section headers and bodies.
-3. Reduce any repeated claims across workflow/trust/architecture.
-4. Run contrast and mobile-first-view QA pass.
-5. Validate with a quick user comprehension test.
+1. The new page no longer resembles the previous visual system.
+2. First impression clearly signals premium and modern quality.
+3. Users can explain value and trust model quickly.
+4. UI complexity feels reduced even with technical depth preserved.
 
 ---
 
-This document is a living guideline. Update it as user feedback, analytics, and usability findings reveal what improves comprehension and trust fastest.
+This file is the source of truth for the landing-page redesign. If a future decision conflicts with this blueprint, update this document first, then implement.
