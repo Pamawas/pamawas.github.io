@@ -1,14 +1,48 @@
-<section id="workflow" class="band" aria-labelledby="workflow-title">
-  <div class="shell split-heading reveal-item">
+---
+const steps = [
+  { n: '01', title: 'Normalize', stat: '2,300+', body: 'Grafana, Prometheus, Loki, and deployment events enter one shared evidence model.', meta: 'Deterministic input' },
+  { n: '02', title: 'Correlate', stat: '~17', body: 'Time, service topology, and labels collapse duplicate symptoms into incidents.', meta: 'Deterministic grouping' },
+  { n: '03', title: 'Investigate', stat: '1 brief', body: 'A bounded agent queries approved sources, classifies certainty, and stops.', meta: 'Read-only AI' },
+];
+---
+<section id="outcome" class="outcome-section" aria-labelledby="outcome-title">
+  <div class="shell outcome-grid reveal-item">
     <header class="section-heading">
-      <div><span class="section-index">01</span><span class="eyebrow">Operational workflow</span></div>
-      <h2 id="workflow-title">Compress the noise without losing the evidence.</h2>
+      <p class="eyebrow">The operational shift</p>
+      <h2 id="outcome-title">Wake up to a conclusion,<br />not a queue.</h2>
     </header>
-    <p class="section-intro">Pamawas separates mechanical grouping from probabilistic reasoning. Each stage narrows the problem while retaining the source data an engineer needs to verify it.</p>
+    <div class="outcome-comparison">
+      <div class="outcome-before">
+        <span class="data-label">Without Pamawas · 06:00</span>
+        <strong>2,317</strong>
+        <p>alerts waiting across five disconnected sources.</p>
+        <div class="noise-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="outcome-after">
+        <span class="data-label">With Pamawas · 06:00</span>
+        <strong>17</strong>
+        <p>incidents, one prioritized brief, evidence attached.</p>
+        <div class="result-line"><span>INC-892</span><b>Likely cause identified</b><small>87%</small></div>
+      </div>
+    </div>
   </div>
-  <div class="shell workflow-grid">
-    <article class="workflow-step reveal-item" style="--reveal-delay: 0ms"><div class="step-top"><span>01</span><strong>2,300+</strong></div><h3>Collect raw signals</h3><p>Normalize alerts, logs, metrics, and deployment events into a shared evidence model.</p><span class="step-type deterministic">Deterministic</span></article>
-    <article class="workflow-step reveal-item" style="--reveal-delay: 100ms"><div class="step-top"><span>02</span><strong>~17</strong></div><h3>Correlate incidents</h3><p>Group events by time window, service topology, and label overlap before using an LLM.</p><span class="step-type deterministic">Deterministic</span></article>
-    <article class="workflow-step reveal-item" style="--reveal-delay: 200ms"><div class="step-top"><span>03</span><strong>1 brief</strong></div><h3>Investigate with bounds</h3><p>Query approved read-only tools, classify findings, and state what remains unknown.</p><span class="step-type bounded">Bounded AI</span></article>
+</section>
+
+<section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
+  <div class="shell workflow-layout">
+    <header class="section-heading reveal-item">
+      <p class="eyebrow">How it works</p>
+      <h2 id="workflow-title">Structure first.<br />Reason second.</h2>
+      <p>Mechanical grouping reduces the search space before a model is allowed to interpret anything.</p>
+    </header>
+    <ol class="workflow-list">
+      {steps.map((step, index) => (
+        <li class="workflow-step reveal-item" style={`--reveal-delay: ${index * 80}ms`}>
+          <span class="step-number">{step.n}</span>
+          <div><h3>{step.title}</h3><p>{step.body}</p><small>{step.meta}</small></div>
+          <strong>{step.stat}</strong>
+        </li>
+      ))}
+    </ol>
   </div>
 </section>

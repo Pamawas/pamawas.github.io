@@ -1,51 +1,47 @@
 ---
-const principles = [
-  ['01', 'Alerts are evidence', 'Many alerts can describe one failure. Correlate by time, topology, and labels before investigation.'],
-  ['02', 'Evidence before conclusions', 'Every statement is typed as fact, likely cause, hypothesis, or unknown.'],
-  ['03', 'The model is bounded', 'The investigator receives curated context and explicit read-only tools, not unrestricted access.'],
-  ['04', 'Humans stay in control', 'Pamawas explains and recommends. It does not autonomously remediate infrastructure.'],
+const boundaries = [
+  ['Read infrastructure state', 'Prometheus, Loki, Kubernetes, PostgreSQL, and deployment history.'],
+  ['Preserve provenance', 'Every query, observation, evidence class, and confidence statement is retained.'],
+  ['State uncertainty', 'Findings are typed as fact, likely cause, hypothesis, or unknown.'],
 ];
 ---
-
-<section id="trust" class="band" aria-labelledby="trust-title">
-  <div class="shell split-heading reveal-item">
-    <header class="section-heading">
-      <div><span class="section-index">04</span><span class="eyebrow">Trust model</span></div>
-      <h2 id="trust-title">Designed to be useful without pretending certainty.</h2>
+<section id="trust" class="trust-section" aria-labelledby="trust-title">
+  <div class="shell trust-layout">
+    <header class="section-heading reveal-item">
+      <p class="eyebrow">The trust boundary</p>
+      <h2 id="trust-title">Useful access.<br />No control plane.</h2>
+      <p>Pamawas investigates with a curated context window and explicit tools. It explains and recommends; engineers decide and act.</p>
     </header>
-    <p class="section-intro">Operational AI earns trust by preserving provenance, stating uncertainty, and keeping side effects out of the investigation path.</p>
-  </div>
-  <div class="shell principle-grid">
-    {principles.map(([number, title, body]) => (
-      <article class="principle-item reveal-item" style={`--reveal-delay: ${Number(number) * 70 - 70}ms`}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>
-    ))}
+    <div class="trust-content">
+      <div class="permission-line reveal-item">
+        <span class="permission-icon allow" aria-hidden="true">✓</span>
+        <div><small>Pamawas can</small><h3>Observe, correlate, explain.</h3></div>
+      </div>
+      <div class="boundary-list">
+        {boundaries.map(([title, body], index) => <article class="reveal-item" style={`--reveal-delay:${index * 70}ms`}><span>0{index + 1}</span><div><h3>{title}</h3><p>{body}</p></div></article>)}
+      </div>
+      <div class="permission-line denied reveal-item">
+        <span class="permission-icon deny" aria-hidden="true">×</span>
+        <div><small>Pamawas cannot</small><h3>Deploy, restart, delete, mutate.</h3></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="quick-start" class="band band-muted" aria-labelledby="quick-start-title">
-  <div class="shell quickstart-grid">
-    <div class="section-heading reveal-item">
-      <div><span class="section-index">05</span><span class="eyebrow">Run locally</span></div>
-      <h2 id="quick-start-title">Inspect the system from source.</h2>
-      <p>Clone the components, start the local infrastructure, and apply the shared schema.</p>
-      <div class="component-links">
-        <a href="https://github.com/Pamawas/pamawas-infra" target="_blank" rel="noopener">Infrastructure ↗</a>
-        <a href="https://github.com/Pamawas/pamawas-schema" target="_blank" rel="noopener">Schema ↗</a>
-        <a href="https://github.com/Pamawas" target="_blank" rel="noopener">All repositories ↗</a>
-      </div>
+<section id="quick-start" class="closing-section" aria-labelledby="closing-title">
+  <div class="shell closing-layout">
+    <div class="closing-copy reveal-item">
+      <p class="eyebrow">Open source · MIT</p>
+      <h2 id="closing-title">See the evidence<br />for yourself.</h2>
+      <p>Inspect every component, run the stack locally, and decide whether Pamawas belongs in your incident workflow.</p>
+      <a class="button button-light" href="https://github.com/Pamawas" target="_blank" rel="noopener">Explore on GitHub <span aria-hidden="true">↗</span></a>
     </div>
-    <div class="terminal-block reveal-item" style="--reveal-delay: 120ms">
-      <div class="terminal-head"><span>quickstart.sh</span><button id="copy-code-btn" aria-label="Copy quick start commands"><span class="copy-text">Copy</span></button></div>
-      <pre id="quickstart-code"><code><span class="code-comment"># Clone the Pamawas repositories</span>
-<span class="code-keyword">for</span> repo <span class="code-keyword">in</span> ingest correlator investigator reporter scheduler schema infra; <span class="code-keyword">do</span>
-  git clone https://github.com/Pamawas/pamawas-<span class="code-variable">$repo</span>.git
-<span class="code-keyword">done</span>
-
-<span class="code-comment"># Start PostgreSQL and local services</span>
-docker compose -f pamawas-infra/docker-compose.local.yml up -d
-
-<span class="code-comment"># Apply the shared database schema</span>
-cd pamawas-schema && go run ./cmd/migrate</code></pre>
+    <div class="quick-command reveal-item" style="--reveal-delay:100ms">
+      <header><span>Start the local stack</span><button id="copy-code-btn" type="button" aria-label="Copy quick start command" title="Copy command"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="1"/><path d="M16 8V5H5v11h3"/></svg></button></header>
+      <pre id="quickstart-code"><code><span>git clone</span> https://github.com/Pamawas/pamawas-infra.git
+<span>cd</span> pamawas-infra/docker-compose
+<span>docker compose</span> up -d</code></pre>
+      <footer><span><i></i> Docker Compose</span><span>Local · inspectable · yours</span></footer>
       <p id="copy-status" class="sr-only" aria-live="polite"></p>
     </div>
   </div>
