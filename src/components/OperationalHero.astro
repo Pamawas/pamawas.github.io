@@ -26,7 +26,7 @@ const evidence = [
       <div class="signal-heading">
         <div><span class="severity">HIGH</span><span class="state">completed</span></div>
         <h2>Checkout failures followed a connection ceiling.</h2>
-        <p>Illustrative data—not a production benchmark.</p>
+        <p>Illustrative data, not a production benchmark.</p>
       </div>
       <div class="signal-list">
         {evidence.map(([type, source, text]) => <div><span class={`signal-type ${type.toLowerCase().replace(' ', '-')}`}>{type}</span><p>{text}</p><small>{source}</small></div>)}
