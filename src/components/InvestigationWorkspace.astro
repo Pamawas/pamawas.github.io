@@ -34,7 +34,7 @@
             <article><span class="evidence-type fact">Fact</span><p>PostgreSQL reported <code>100 / 100</code> active connections.</p><time>01:47:28</time></article>
             <article><span class="evidence-type fact">Fact</span><p>Release v2.14.0 completed 12 seconds before p99 latency crossed 2.5s.</p><time>01:47:00</time></article>
             <article><span class="evidence-type likely">Likely</span><p>The new pool configuration exhausted connections under production load.</p><time>87%</time></article>
-            <article><span class="evidence-type unknown">Unknown</span><p>Whether connection release timing changed requires code review.</p><time>Unverified</time></article>
+            <article><span class="evidence-type hypothesis">Hypothesis</span><p>Connection release timing may have changed in v2.14.0.</p><time>Unverified</time></article>
           </div>
           <div class="next-check"><span>Recommended first check</span><p>Compare <code>max_connections</code> with the v2.14.0 pool configuration.</p></div>
         </div>

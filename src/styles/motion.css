@@ -1,8 +1,16 @@
 :root { --ease-out:cubic-bezier(.22,1,.36,1); }
-.button,.icon-button,.nav-github,.brief-shell,.quick-command { transition:transform .3s var(--ease-out),border-color .2s ease,box-shadow .3s var(--ease-out),background .2s ease; }
-.button:hover,.nav-github:hover { transform:translateY(-2px); }.button-primary:hover { background:#98dfb5; }.button-secondary:hover,.nav-github:hover,.icon-button:hover { border-color:#788176; }.brief-shell:hover,.quick-command:hover { transform:translateY(-4px); box-shadow:0 44px 110px rgba(0,0,0,.45); }
-.investigation-tabs button { transition:color .2s ease,border-color .2s ease; }.finding-list article,.timeline li,.trace-list li { transition:padding .25s var(--ease-out),background .2s ease; }.finding-list article:hover,.timeline li:hover,.trace-list li:hover { padding-inline:9px; background:#ecece5; }
-@keyframes rise { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
-@keyframes brief-in { from { opacity:0; transform:translateY(30px) scale(.985); } to { opacity:1; transform:none; } }
-.motion-ready .hero-copy>* { animation:rise .7s var(--ease-out) both; }.motion-ready .hero-copy>:nth-child(2){animation-delay:.08s}.motion-ready .hero-copy>:nth-child(3){animation-delay:.16s}.motion-ready .hero-copy>:nth-child(4){animation-delay:.24s}.motion-ready .brief-shell{animation:brief-in .85s var(--ease-out) .14s both}
-.motion-ready .reveal-item { opacity:0; transform:translateY(24px); }.motion-ready .reveal-item.is-visible { opacity:1; transform:none; transition:opacity .7s var(--ease-out) var(--reveal-delay,0ms),transform .7s var(--ease-out) var(--reveal-delay,0ms); }
+.button,.icon-button,.nav-github,.brief-shell,.quick-command { transition:border-color .15s ease,background-color .15s ease,color .15s ease; }
+.button-primary:hover,.button-light:hover { background:var(--color-accent-hover,#17b39d); border-color:var(--color-accent-hover,#17b39d); }
+.button-secondary:hover,.nav-github:hover,.icon-button:hover { border-color:var(--color-night-text); }
+.brief-shell:hover,.quick-command:hover { border-color:rgb(31 209 184 / .4); }
+.investigation-tabs button { transition:color .15s ease,border-color .15s ease; }
+.finding-list article,.timeline li,.trace-list li { transition:background-color .15s ease; }
+.finding-list article:hover,.timeline li:hover,.trace-list li:hover { background:var(--color-soft); }
+@keyframes rise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+.motion-ready .hero-copy>* { animation:rise .2s ease-out both; }
+.motion-ready .hero-copy>:nth-child(2){animation-delay:.06s}
+.motion-ready .hero-copy>:nth-child(3){animation-delay:.12s}
+.motion-ready .hero-copy>:nth-child(4){animation-delay:.18s}
+.motion-ready .brief-shell{animation:rise .2s ease-out .18s both}
+.motion-ready .reveal-item { opacity:0; transform:translateY(8px); }
+.motion-ready .reveal-item.is-visible { opacity:1; transform:none; transition:opacity .2s ease-out var(--reveal-delay,0ms),transform .2s ease-out var(--reveal-delay,0ms); }
