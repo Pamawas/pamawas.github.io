@@ -1,8 +1,17 @@
 ---
 import '../styles/global.css';
 import type { AstroProps } from 'astro';
-interface Props extends AstroProps { title?: string; description?: string; }
-const { title = 'Pamawas | AI Infrastructure Incident Investigator', description = 'Evidence-backed infrastructure incident investigation.', ...rest } = Astro.props;
+
+interface Props extends AstroProps {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Pamawas — AI Infrastructure Incident Investigator',
+  description = 'Evidence-backed infrastructure incident investigation. Bounded tools, deterministic correlation, honest uncertainty.',
+  ...rest
+} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -10,21 +19,36 @@ const { title = 'Pamawas | AI Infrastructure Incident Investigator', description
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#0A0E17" />
+  <meta name="theme-color" content="#F4F4F0" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14181B" media="(prefers-color-scheme: dark)" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pamawas.github.io" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
   <title>{title}</title>
   <script is:inline>
-    (function(){const saved=localStorage.getItem('theme');if(saved){document.documentElement.setAttribute('data-theme',saved);document.documentElement.classList.toggle('dark',saved==='dark')}})();
+    (function(){
+      try {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      } catch (e) {}
+    })();
   </script>
   {rest.head}
 </head>
-<body {...rest}><slot /></body>
+<body {...rest}>
+  <slot />
+</body>
 </html>

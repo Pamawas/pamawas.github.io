@@ -1,31 +1,50 @@
 ---
 const stages = [
-  ['01','Ingest','Authenticated generic and Grafana webhooks become normalized, idempotent events.','events'],
-  ['02','Correlate','Versioned rules create or extend compatible incident lifecycles.','incidents + outbox'],
-  ['03','Investigate','A bounded agent queries configured Prometheus and Loki adapters.','runs + evidence'],
-  ['04','Report','Daily and high-severity requests produce durable multi-incident reports.','reports + attempts'],
-  ['05','Review','Human feedback measures correctness, usefulness, and false confidence.','reviews + feedback'],
+  { n: '01', title: 'Ingest', desc: 'Authenticated generic and Grafana webhooks become normalized, idempotent events.', output: 'events' },
+  { n: '02', title: 'Correlate', desc: 'Versioned rules group related events into distinct, traceable incident lifecycles.', output: 'incidents + outbox' },
+  { n: '03', title: 'Investigate', desc: 'A bounded LLM agent queries configured Prometheus, Loki, and topology adapters.', output: 'runs + claims' },
+  { n: '04', title: 'Report', desc: 'Daily digests and urgent triggers produce durable multi-channel delivery attempts.', output: 'reports + attempts' },
+  { n: '05', title: 'Review', desc: 'Human feedback measures correctness, utility, and identifies false confidence.', output: 'reviews + feedback' },
 ];
+
 const principles = [
-  ['Never fabricate evidence','Unavailable sources return unavailable. They never return sample observations.'],
-  ['Unknown is a valid result','Contradictory or insufficient evidence ends in an explicit unknown, not a guessed RCA.'],
-  ['Commit before side effects','PostgreSQL transactions and outboxes preserve state before remote work begins.'],
+  { tone: 'moss-accent', title: 'Never fabricate evidence', body: 'Unavailable adapters return unavailable. The agent is structurally barred from synthesizing mock metrics or hypothetical logs.' },
+  { tone: 'ochre-accent', title: 'Unknown is a valid result', body: 'Contradictory or incomplete evidence produces an explicit UNKNOWN claim rather than an ungrounded root-cause guess.' },
+  { tone: 'fjord-accent', title: 'Commit before side effects', body: 'PostgreSQL transactions and transactional outboxes guarantee state persistence before any remote network call occurs.' },
 ];
 ---
 <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
   <div class="shell">
-    <header class="section-heading reveal-item">
-      <p class="eyebrow">The canonical workflow</p>
-      <h2 id="workflow-title">Structure first.<br/>Reason inside boundaries.</h2>
-      <p>Every stage owns its writes. Retries may repeat transport, but idempotency prevents duplicate durable effects.</p>
+    <header class="section-header reveal-item">
+      <div>
+        <p class="eyebrow">The canonical workflow</p>
+        <h2 id="workflow-title">Structure first.<br />Reason inside boundaries.</h2>
+      </div>
+      <p>
+        Every stage strictly isolates state. Retries may repeat network transport, but transactional idempotency prevents duplicate durable effects across your systems.
+      </p>
     </header>
+
     <ol class="workflow-track">
-      {stages.map(([number,title,body,output], index) => <li class="workflow-card reveal-item" style={`--reveal-delay:${index * 55}ms`}>
-        <div class="workflow-number">{number}</div><div><h3>{title}</h3><p>{body}</p></div><code>{output}</code>
-      </li>)}
+      {stages.map((stage, index) => (
+        <li class="workflow-card reveal-item" style={`--reveal-delay: ${index * 60}ms`}>
+          <div class="workflow-card-head">
+            <span class="workflow-number">{stage.n}</span>
+          </div>
+          <h3>{stage.title}</h3>
+          <p>{stage.desc}</p>
+          <code class="workflow-output">&rarr; {stage.output}</code>
+        </li>
+      ))}
     </ol>
+
     <div class="principle-grid">
-      {principles.map(([title,body], index) => <article class="principle-card reveal-item" style={`--reveal-delay:${index * 70}ms`}><span>0{index+1}</span><h3>{title}</h3><p>{body}</p></article>)}
+      {principles.map((principle, index) => (
+        <article class={`principle-item ${principle.tone} reveal-item`} style={`--reveal-delay: ${index * 80}ms`}>
+          <h3>{principle.title}</h3>
+          <p>{principle.body}</p>
+        </article>
+      ))}
     </div>
   </div>
 </section>

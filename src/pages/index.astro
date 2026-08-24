@@ -6,25 +6,39 @@ import InvestigationWorkspace from '../components/InvestigationWorkspace.astro';
 import TrustAndSetup from '../components/TrustAndSetup.astro';
 ---
 
-<Layout title="Pamawas | Evidence-backed incident intelligence" description="Pamawas turns authenticated infrastructure events into traceable incidents, bounded investigations, evidence-backed reports, and measurable human feedback.">
-  <a class="fixed top-2.5 left-2.5 z-[100] -translate-y-[160%] bg-ink px-3.5 py-2.5 text-canvas focus:translate-y-0" href="#main">Skip to content</a>
-  <header class="site-header fixed inset-x-0 top-0 z-50 h-[62px] text-night-text transition-all md:h-[72px]">
-    <nav class="mx-auto flex h-full w-[min(calc(100%-28px),1200px)] items-center justify-between gap-6 md:w-[min(calc(100%-48px),1200px)]" aria-label="Primary navigation">
-      <a class="inline-flex items-center gap-2.5 font-semibold" href="#main" aria-label="Pamawas home">
-        <span class="flex h-6 w-6 items-end gap-[3px]" aria-hidden="true"><i class="h-2.5 w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent"></i><i class="h-[18px] w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent"></i><i class="h-6 w-[5px] skew-x-[-14deg] rounded-[1px] bg-accent"></i></span>
+<Layout title="Pamawas - AI Infrastructure Incident Investigator" description="Pamawas turns authenticated infrastructure events into traceable incidents, bounded investigations, evidence-backed reports, and measurable human feedback.">
+  <a class="fixed top-3 left-3 z-[100] -translate-y-[180%] rounded-full bg-ink px-4 py-2 text-xs font-semibold text-paper shadow-md transition focus:translate-y-0" href="#main">
+    Skip to content
+  </a>
+
+  <!-- Site Header -->
+  <header class="site-header fixed inset-x-0 top-0 z-50 h-[68px] border-b border-transparent transition-all duration-200">
+    <nav class="mx-auto flex h-full w-[min(calc(100%-32px),1180px)] items-center justify-between gap-6" aria-label="Primary navigation">
+      <a class="inline-flex items-center gap-3 font-display text-lg font-bold tracking-tight text-ink transition hover:opacity-85" href="#main" aria-label="Pamawas home">
+        <span class="flex h-6 w-6 items-end gap-[3px]" aria-hidden="true">
+          <i class="h-2.5 w-[5px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+          <i class="h-[18px] w-[5px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+          <i class="h-6 w-[5px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+        </span>
         <span>Pamawas</span>
       </a>
-      <div class="hidden gap-8 text-[13px] text-[#b8beb3] md:flex [&_a]:transition-colors [&_a:hover]:text-white">
-        <a href="#workflow">Workflow</a>
-        <a href="#investigation">Evidence</a>
+
+      <div class="hidden items-center gap-8 text-[13px] font-medium text-ink-soft md:flex [&_a]:transition-colors [&_a:hover]:text-ink">
+        <a href="#workflow">Pipeline</a>
+        <a href="#investigation">Evidence Model</a>
         <a href="#trust">Reliability</a>
+        <a href="#quick-start">Quickstart</a>
       </div>
-      <div class="flex items-center gap-2">
-        <button id="theme-toggle" class="icon-button grid size-[38px] cursor-pointer place-items-center rounded-ui border border-[#3b4338] bg-transparent text-night-text transition hover:border-[#788176]" type="button" aria-label="Switch to light theme" title="Switch theme">
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="grid size-[38px] cursor-pointer place-items-center rounded-full border border-line bg-transparent text-ink transition hover:border-fjord hover:text-fjord" type="button" aria-label="Switch to light theme" title="Switch theme">
           <svg class="theme-moon size-[17px] fill-none stroke-current stroke-[1.7]" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
           <svg class="theme-sun size-[17px] fill-none stroke-current stroke-[1.7]" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
         </button>
-        <a class="nav-github hidden min-h-[38px] items-center gap-4 rounded-ui border border-[#3b4338] px-3.5 text-[13px] transition hover:-translate-y-0.5 hover:border-[#788176] min-[430px]:inline-flex" href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="hidden min-h-[38px] items-center gap-2 rounded-full border border-line px-4 text-[13px] font-semibold text-ink transition hover:-translate-y-0.5 hover:border-fjord hover:text-fjord min-[480px]:inline-flex" href="https://github.com/Pamawas" target="_blank" rel="noopener">
+          <span>GitHub</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </nav>
   </header>
@@ -36,22 +50,52 @@ import TrustAndSetup from '../components/TrustAndSetup.astro';
     <TrustAndSetup />
   </main>
 
-  <footer class="border-t border-[#30362e] bg-night py-8 text-night-text">
-    <div class="mx-auto grid w-[min(calc(100%-28px),1200px)] items-center gap-4 md:w-[min(calc(100%-48px),1200px)] md:grid-cols-[1fr_1fr_auto] md:gap-8">
-      <a class="inline-flex items-center gap-2.5 font-semibold" href="#main"><span class="flex h-6 w-6 items-end gap-[3px]" aria-hidden="true"><i class="h-2.5 w-[5px] skew-x-[-14deg] bg-accent"></i><i class="h-[18px] w-[5px] skew-x-[-14deg] bg-accent"></i><i class="h-6 w-[5px] skew-x-[-14deg] bg-accent"></i></span><span>Pamawas</span></a>
-      <p class="m-0 text-xs text-night-muted">Open infrastructure intelligence, built in public.</p>
-      <div class="flex gap-6 text-xs"><a href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub</a><a href="#quick-start">Run locally</a></div>
+  <!-- Site Footer -->
+  <footer class="border-t border-line bg-paper-warm py-12 text-ink">
+    <div class="mx-auto grid w-[min(calc(100%-32px),1180px)] items-center gap-6 md:grid-cols-[1fr_1fr_auto]">
+      <a class="inline-flex items-center gap-3 font-display font-bold tracking-tight text-ink" href="#main">
+        <span class="flex h-5 w-5 items-end gap-[2px]" aria-hidden="true">
+          <i class="h-2 w-[4px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+          <i class="h-[14px] w-[4px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+          <i class="h-5 w-[4px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+        </span>
+        <span>Pamawas</span>
+      </a>
+      <p class="m-0 text-xs text-ink-soft">
+        Open infrastructure incident intelligence &middot; MIT License. Built in public.
+      </p>
+      <div class="flex items-center gap-6 text-xs font-semibold text-ink-soft [&_a]:transition-colors [&_a:hover]:text-fjord">
+        <a href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="#quick-start">Run locally</a>
+      </div>
     </div>
   </footer>
+
+  <style>
+    .site-header.is-scrolled {
+      background-color: var(--color-paper);
+      border-bottom-color: var(--color-line);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+  </style>
 
   <script>
     const root = document.documentElement;
     const themeToggle = document.getElementById('theme-toggle');
+    
     const currentTheme = () => {
       const explicit = root.getAttribute('data-theme');
-      return explicit === 'light' || explicit === 'dark' ? explicit : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      return explicit === 'light' || explicit === 'dark' 
+        ? explicit 
+        : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     };
-    const syncThemeLabel = () => themeToggle?.setAttribute('aria-label', `Switch to ${currentTheme() === 'dark' ? 'light' : 'dark'} theme`);
+
+    const syncThemeLabel = () => {
+      const active = currentTheme();
+      themeToggle?.setAttribute('aria-label', `Switch to ${active === 'dark' ? 'light' : 'dark'} theme`);
+    };
+
     themeToggle?.addEventListener('click', () => {
       const next = currentTheme() === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
@@ -61,53 +105,81 @@ import TrustAndSetup from '../components/TrustAndSetup.astro';
     });
     syncThemeLabel();
 
+    // Accessible Tabs Management
     const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
     function activateTab(tab: HTMLButtonElement, focus = false) {
       tabs.forEach((item) => {
         const selected = item === tab;
         item.setAttribute('aria-selected', String(selected));
         item.tabIndex = selected ? 0 : -1;
-        const panel = document.getElementById(item.getAttribute('aria-controls') || '');
-        if (panel) panel.hidden = !selected;
+        const panelId = item.getAttribute('aria-controls') || '';
+        const panel = document.getElementById(panelId);
+        if (panel) {
+          panel.hidden = !selected;
+        }
       });
       if (focus) tab.focus();
     }
+
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => activateTab(tab));
       tab.addEventListener('keydown', (event) => {
-        let next: number | null = null;
-        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-        if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
-        if (event.key === 'Home') next = 0;
-        if (event.key === 'End') next = tabs.length - 1;
-        if (next !== null) { event.preventDefault(); activateTab(tabs[next], true); }
+        let nextIndex: number | null = null;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = tabs.length - 1;
+        if (nextIndex !== null) {
+          event.preventDefault();
+          activateTab(tabs[nextIndex], true);
+        }
       });
     });
 
+    // Subtle Scroll-Reveal
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>('.reveal-item'));
     if (!reducedMotion && 'IntersectionObserver' in window) {
       root.classList.add('motion-ready');
-      const observer = new IntersectionObserver((entries, current) => entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); current.unobserve(entry.target); }
-      }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      const observer = new IntersectionObserver((entries, current) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            current.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
       revealItems.forEach((item) => observer.observe(item));
-    } else revealItems.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+    }
 
+    // Scroll Header styling
     const header = document.querySelector('.site-header');
-    const syncHeader = () => header?.classList.toggle('is-scrolled', scrollY > 12);
+    const syncHeader = () => {
+      header?.classList.toggle('is-scrolled', window.scrollY > 16);
+    };
     syncHeader();
-    addEventListener('scroll', syncHeader, { passive: true });
+    window.addEventListener('scroll', syncHeader, { passive: true });
 
+    // Quickstart Code Copy
     const copyButton = document.getElementById('copy-code-btn');
     const quickstart = document.getElementById('quickstart-code');
+    const copyStatus = document.getElementById('copy-status');
     copyButton?.addEventListener('click', async () => {
       if (!quickstart) return;
       try {
         await navigator.clipboard.writeText(quickstart.textContent || '');
-        copyButton.setAttribute('aria-label', 'Copied');
-        window.setTimeout(() => copyButton.setAttribute('aria-label', 'Copy quick start command'), 1600);
-      } catch { document.getElementById('copy-status')!.textContent = 'Select the command manually to copy it.'; }
+        const originalText = copyButton.textContent;
+        copyButton.textContent = 'Copied!';
+        if (copyStatus) copyStatus.textContent = 'Commands copied to clipboard.';
+        window.setTimeout(() => {
+          copyButton.textContent = originalText;
+          if (copyStatus) copyStatus.textContent = '';
+        }, 1800);
+      } catch {
+        if (copyStatus) copyStatus.textContent = 'Please copy commands manually.';
+      }
     });
   </script>
 </Layout>

@@ -1,5 +1,194 @@
-.button,.investigation-tabs button,.quick-command button,.signal-card,.principle-card{transition:color .15s ease,background-color .15s ease,border-color .15s ease}
-.button-secondary:hover,.quick-command button:hover{border-color:var(--color-accent);color:var(--color-accent)}.signal-card:hover{border-color:rgb(25 184 153/.5)}.principle-card:hover{background:var(--color-soft)}
-@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.motion-ready .hero-copy{animation:rise .35s ease-out both}.motion-ready .signal-card{animation:rise .35s ease-out .1s both}.motion-ready .reveal-item:not(.hero-copy):not(.signal-card):not(.is-visible){opacity:0;transform:translateY(10px)}.motion-ready .reveal-item.is-visible{opacity:1;transform:none;transition:opacity .3s ease-out var(--reveal-delay,0ms),transform .3s ease-out var(--reveal-delay,0ms)}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.hero-glow{display:none}}
+/* ==========================================================================
+   Motion, Fluid Animations & Micro-Interactions
+   ========================================================================== */
+
+/* Base transition tokens */
+.button,
+.investigation-tab-btn,
+.copy-btn,
+.claim-box,
+.workflow-card,
+.principle-item,
+.control-item,
+.text-link {
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Button & Link Hover Dynamics */
+.button:hover {
+  transform: translateY(-2px);
+}
+.button:active {
+  transform: translateY(0);
+}
+.button span[aria-hidden="true"] {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.button:hover span[aria-hidden="true"] {
+  transform: translate(2px, 2px);
+}
+
+.text-link span[aria-hidden="true"] {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.text-link:hover span[aria-hidden="true"] {
+  transform: translateX(4px);
+}
+
+/* Theme Toggle Click / Hover Animation */
+#theme-toggle svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#theme-toggle:hover svg {
+  transform: rotate(20deg) scale(1.1);
+}
+#theme-toggle:active svg {
+  transform: rotate(90deg) scale(0.9);
+}
+
+/* Radar Pulse on Live Status Dot */
+.live-dot {
+  position: relative;
+}
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.75;
+  animation: radar-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radar-ping {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  70%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Topographic Contour Organic Drift */
+@keyframes contour-drift-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-12px, 8px) scale(1.02) rotate(1deg);
+  }
+}
+
+@keyframes contour-drift-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(10px, -10px) scale(0.98) rotate(-1.5deg);
+  }
+}
+
+.hero-contour-svg {
+  transform-origin: 50% 50%;
+  animation: contour-drift-1 18s ease-in-out infinite;
+}
+
+.hero-contour-svg path:nth-child(even) {
+  transform-origin: 50% 50%;
+  animation: contour-drift-2 22s ease-in-out infinite;
+}
+
+/* Workflow Card Interactive Hover Accent */
+.workflow-card {
+  transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.workflow-card:hover {
+  background-color: var(--paper);
+  transform: translateY(-2px);
+}
+.workflow-card:hover .workflow-output {
+  border-top-style: solid;
+  color: var(--fjord);
+}
+
+/* Investigation Workspace Tab Panel Animations */
+.investigation-panel:not([hidden]) {
+  animation: panel-enter 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Claim Box Hover Dynamics */
+.claim-box {
+  transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.claim-box:hover {
+  background-color: var(--paper-warm);
+  transform: translateY(-1px);
+}
+
+/* Staggered Scroll-Reveal Animations */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motion-ready .hero-copy {
+  animation: rise-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.motion-ready .signal-card {
+  animation: rise-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.motion-ready .reveal-item:not(.hero-copy):not(.signal-card):not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.motion-ready .reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+}
+
+/* Accessibility: Strict Reduced-Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .hero-contour-svg,
+  .hero-contour-svg path,
+  .live-dot::after {
+    animation: none !important;
+  }
+}

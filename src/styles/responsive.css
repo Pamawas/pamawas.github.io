@@ -1,3 +1,94 @@
-@media(max-width:1000px){.hero-grid{grid-template-columns:1fr;min-height:auto}.hero-copy{max-width:760px}.signal-card{max-width:760px}.workflow-track{grid-template-columns:1fr 1fr}.workflow-card{border-bottom:1px solid var(--color-line)}.workflow-card:last-child{grid-column:1/-1}.workflow-card p{min-height:0}.trust-layout,.closing-layout{grid-template-columns:1fr;gap:60px}}
-@media(max-width:720px){.shell{width:min(calc(100% - 32px),var(--shell))}.hero{padding:104px 0 42px}.hero-grid{gap:44px}.hero-copy h1{font-size:48px}.hero-body{font-size:16px}.hero-actions{display:grid}.button{width:100%}.hero-principles{display:grid}.signal-list>div{grid-template-columns:84px 1fr}.signal-list small{grid-column:2;text-align:left}.signal-card>footer{flex-wrap:wrap}.workflow-section,.investigation-section,.trust-section,.closing-section{padding:80px 0}.workflow-track,.principle-grid{grid-template-columns:1fr}.workflow-card,.principle-card{border-right:0}.workflow-card:last-child{grid-column:auto}.investigation-tabs{grid-template-columns:1fr}.investigation-tabs button{border-right:0;border-bottom:1px solid var(--color-line);border-left:3px solid transparent}.investigation-tabs button[aria-selected="true"]{border-left-color:var(--color-accent);border-bottom-color:var(--color-line)}.investigation-panel{padding:22px}.finding-grid{grid-template-columns:1fr}.finding-grid article,.finding-grid article:nth-child(2n){border-right:0;border-bottom:1px solid var(--color-line)}.finding-grid article:last-child{border-bottom:0}.provenance-list div,.failure-list li{grid-template-columns:1fr;gap:8px}.closing-actions{align-items:stretch;flex-direction:column}.quick-command pre{font-size:10px}}
-@media(max-width:430px){.hero-copy h1{font-size:40px}.signal-heading,.signal-list>div{padding-inline:18px}.signal-list>div{grid-template-columns:1fr}.signal-list small{grid-column:auto}.panel-intro{flex-direction:column}.section-heading h2{font-size:32px}}
+/* Responsive adaptations for Scandinavian Layout */
+@media (max-width: 1024px) {
+  .workflow-track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .workflow-card {
+    border-bottom: 1px solid var(--color-line);
+  }
+  .workflow-card:nth-child(2n) {
+    border-right: 0;
+  }
+  .workflow-card:last-child {
+    grid-column: 1 / -1;
+    border-right: 0;
+  }
+  .principle-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .shell {
+    width: min(calc(100% - 32px), var(--shell));
+  }
+  .hero {
+    padding: 100px 0 50px;
+  }
+  .hero-contour-svg {
+    opacity: 0.45;
+    right: -200px;
+  }
+  .workflow-section,
+  .investigation-section,
+  .trust-section,
+  .closing-section {
+    padding: 70px 0;
+  }
+  .workflow-track {
+    grid-template-columns: 1fr;
+  }
+  .workflow-card {
+    border-right: 0;
+  }
+  .workflow-card p {
+    min-height: auto;
+  }
+  .investigation-tabs {
+    grid-template-columns: 1fr;
+  }
+  .investigation-tab-btn {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .investigation-panel {
+    padding: 20px;
+  }
+  .claims-grid {
+    grid-template-columns: 1fr;
+  }
+  .signal-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .signal-item small {
+    text-align: left;
+  }
+  .provenance-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .failure-matrix li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .control-item {
+    grid-template-columns: 28px 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-copy h1 {
+    font-size: 36px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions .button {
+    width: 100%;
+  }
+  .section-header h2 {
+    font-size: 28px;
+  }
+}

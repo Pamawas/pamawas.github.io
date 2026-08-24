@@ -1,37 +1,72 @@
 ---
 const evidence = [
-  ['FACT', 'Prometheus', 'Active connections reached the configured maximum.'],
-  ['FACT', 'Loki', 'Connection pool timeouts increased in the same window.'],
-  ['LIKELY CAUSE', 'Investigator', 'Pool exhaustion likely caused the request failures.'],
-  ['UNKNOWN', 'Deployment adapter', 'Change correlation is unavailable until a real adapter is configured.'],
+  { type: 'FACT', tone: 'fact', source: 'Prometheus', text: 'Active connections reached the configured maximum.' },
+  { type: 'FACT', tone: 'fact', source: 'Loki', text: 'Connection pool timeouts increased in the same window.' },
+  { type: 'LIKELY', tone: 'likely', source: 'Investigator', text: 'Pool exhaustion likely caused the request failures.' },
+  { type: 'UNKNOWN', tone: 'unknown', source: 'Deployment adapter', text: 'Change correlation is unavailable until a real adapter is configured.' },
 ];
 ---
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero-glow" aria-hidden="true"></div>
+  <!-- Signature Topographic Contour Vector (Elevation terrain of evidence) -->
+  <svg class="hero-contour-svg" viewBox="0 0 800 800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <path class="contour-line contour-fjord" d="M 450,120 C 580,90 690,180 720,310 C 750,440 680,590 550,670 C 420,750 260,710 180,590 C 100,470 140,320 230,210 C 320,100 370,140 450,120 Z" />
+    <path class="contour-line contour-falu" d="M 480,180 C 590,160 670,230 690,340 C 710,450 640,560 530,620 C 420,680 300,650 240,550 C 180,450 210,330 280,240 C 350,150 400,190 480,180 Z" />
+    <path class="contour-line contour-ochre" d="M 500,240 C 580,230 640,280 650,360 C 660,440 600,520 510,560 C 420,600 340,570 300,490 C 260,410 280,330 330,270 C 380,210 440,250 500,240 Z" />
+    <path class="contour-line contour-fjord" d="M 520,300 C 570,290 610,330 615,380 C 620,430 575,480 505,510 C 435,540 380,520 355,460 C 330,400 345,350 385,310 C 425,270 480,310 520,300 Z" />
+    <path class="contour-line contour-falu" d="M 535,350 C 565,345 585,365 588,395 C 591,425 560,455 510,470 C 460,485 425,470 410,435 C 395,400 410,370 435,355 C 460,340 505,355 535,350 Z" />
+  </svg>
+
   <div class="shell hero-grid">
     <div class="hero-copy reveal-item">
       <p class="eyebrow">Open-source incident intelligence</p>
-      <h1 id="hero-title">From alert noise<br/><em>to evidence.</em></h1>
-      <p class="hero-body">Pamawas turns authenticated infrastructure events into traceable incidents, investigates through bounded read-only tools, and reports what is known, likely, and still unknown.</p>
+      <h1 id="hero-title">From alert noise<br /><span class="accent">to evidence.</span></h1>
+      <p class="hero-body">
+        Pamawas turns authenticated infrastructure events into traceable incidents, investigates through bounded read-only tools, and reports what is known, likely, and still unknown.
+      </p>
       <div class="hero-actions">
-        <a class="button button-primary" href="#workflow">Follow the workflow <span aria-hidden="true">↓</span></a>
-        <a class="button button-secondary" href="https://github.com/Pamawas" target="_blank" rel="noopener">Explore the code <span aria-hidden="true">↗</span></a>
+        <a class="button button-primary" href="#workflow">
+          <span>Follow the workflow</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a class="button button-secondary" href="https://github.com/Pamawas" target="_blank" rel="noopener">
+          <span>Explore the code</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
-      <ul class="hero-principles" aria-label="Core guarantees">
-        <li>Deterministic correlation</li><li>No fabricated evidence</li><li>Exactly-once durable effects</li>
+      <ul class="hero-guarantees" aria-label="Core guarantees">
+        <li>Deterministic correlation</li>
+        <li>No fabricated evidence</li>
+        <li>Exactly-once durable effects</li>
       </ul>
     </div>
+
     <article class="signal-card reveal-item" aria-label="Illustrative investigation output">
-      <header><span><i></i> Representative output</span><code>irun_example</code></header>
-      <div class="signal-heading">
-        <div><span class="severity">HIGH</span><span class="state">completed</span></div>
+      <header>
+        <span><i class="live-dot" aria-hidden="true"></i>Representative output</span>
+        <code>irun_example</code>
+      </header>
+      <div class="signal-summary">
+        <div class="signal-meta-row">
+          <span class="signal-meta-badge high">HIGH</span>
+          <span class="signal-meta-badge status">COMPLETED</span>
+        </div>
         <h2>Checkout failures followed a connection ceiling.</h2>
-        <p>Illustrative data, not a production benchmark.</p>
+        <p class="disclaimer">Illustrative data, not a production benchmark.</p>
       </div>
-      <div class="signal-list">
-        {evidence.map(([type, source, text]) => <div><span class={`signal-type ${type.toLowerCase().replace(' ', '-')}`}>{type}</span><p>{text}</p><small>{source}</small></div>)}
+      <div class="signal-rows">
+        {evidence.map((item) => (
+          <div class="signal-item">
+            <span class={`pill-badge ${item.tone}`}>{item.type}</span>
+            <p>{item.text}</p>
+            <small>{item.source}</small>
+          </div>
+        ))}
       </div>
-      <footer><span>4 evidence items</span><span>0 write actions</span><span>provenance linked</span></footer>
+      <footer>
+        <span>4 evidence items</span>
+        <span>0 write actions</span>
+        <span>provenance linked</span>
+      </footer>
     </article>
   </div>
 </section>
