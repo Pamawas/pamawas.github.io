@@ -91,9 +91,11 @@
 .principle-item.moss-accent {
   border-top-color: var(--color-moss);
 }
+
 .principle-item.ochre-accent {
   border-top-color: var(--color-ochre);
 }
+
 .principle-item.fjord-accent {
   border-top-color: var(--color-fjord);
 }

@@ -8,15 +8,13 @@ const controls = [
 ---
 <section id="trust" class="trust-section" aria-labelledby="trust-title">
   <div class="shell trust-layout">
-    <header class="section-header reveal-item">
-      <div>
-        <p class="eyebrow">Reliability & governance</p>
-        <h2 id="trust-title">Safe when requests repeat.<br />Honest when evidence stops.</h2>
-      </div>
-      <p>
+    <div class="trust-copy reveal-item">
+      <p class="eyebrow">Reliability &amp; governance</p>
+      <h2 id="trust-title">Safe when requests repeat.<br />Honest when evidence stops.</h2>
+      <p class="trust-desc">
         Application contracts enforce authentication, replay protection, idempotency, bounded egress, and durable recovery.
       </p>
-    </header>
+    </div>
 
     <div class="control-list">
       {controls.map((item, index) => (

@@ -51,21 +51,25 @@ import TrustAndSetup from '../components/TrustAndSetup.astro';
   </main>
 
   <!-- Site Footer -->
-  <footer class="border-t border-line bg-paper-warm py-12 text-ink">
-    <div class="mx-auto grid w-[min(calc(100%-32px),1180px)] items-center gap-6 md:grid-cols-[1fr_1fr_auto]">
-      <a class="inline-flex items-center gap-3 font-display font-bold tracking-tight text-ink" href="#main">
-        <span class="flex h-5 w-5 items-end gap-[2px]" aria-hidden="true">
-          <i class="h-2 w-[4px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
-          <i class="h-[14px] w-[4px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
-          <i class="h-5 w-[4px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
-        </span>
-        <span>Pamawas</span>
-      </a>
-      <p class="m-0 text-xs text-ink-soft">
-        Open infrastructure incident intelligence &middot; MIT License. Built in public.
-      </p>
+  <footer class="border-t border-line bg-paper-warm py-7 text-ink">
+    <div class="shell flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
+        <a class="inline-flex items-center gap-2.5 font-display font-bold tracking-tight text-ink transition hover:opacity-85" href="#main" aria-label="Pamawas home">
+          <span class="flex h-4 w-4 items-end gap-[2px]" aria-hidden="true">
+            <i class="h-1.5 w-[3px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+            <i class="h-3 w-[3px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+            <i class="h-4 w-[3px] skew-x-[-14deg] rounded-[1px] bg-fjord"></i>
+          </span>
+          <span class="text-sm">Pamawas</span>
+        </a>
+        <span class="hidden text-line sm:inline" aria-hidden="true">&middot;</span>
+        <p class="m-0 text-xs text-ink-soft">
+          Open infrastructure incident intelligence &middot; MIT License
+        </p>
+      </div>
+
       <div class="flex items-center gap-6 text-xs font-semibold text-ink-soft [&_a]:transition-colors [&_a:hover]:text-fjord">
-        <a href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://github.com/Pamawas" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
         <a href="#quick-start">Run locally</a>
       </div>
     </div>
@@ -73,10 +77,14 @@ import TrustAndSetup from '../components/TrustAndSetup.astro';
 
   <style>
     .site-header.is-scrolled {
-      background-color: var(--color-paper);
-      border-bottom-color: var(--color-line);
+      background-color: rgba(244, 244, 240, 0.82);
+      border-bottom-color: var(--line);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+    }
+    :root[data-theme="dark"] .site-header.is-scrolled,
+    html.dark .site-header.is-scrolled {
+      background-color: rgba(20, 24, 27, 0.82);
     }
   </style>
 

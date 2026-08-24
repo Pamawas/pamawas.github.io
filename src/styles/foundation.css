@@ -12,14 +12,14 @@
   --color-ink-faint: #9A9F97;
   --color-line: #DDE1DC;
   
-  --color-fjord: #2F5049;
-  --color-fjord-tint: #E1E9E4;
-  --color-falu: #9C4630;
-  --color-falu-tint: #F2E2DB;
-  --color-ochre: #A97A2E;
-  --color-ochre-tint: #F0E5D2;
-  --color-moss: #546E51;
-  --color-moss-tint: #E4EAE0;
+  --color-fjord: #2E6B5A;
+  --color-fjord-tint: #D8EBE5;
+  --color-falu: #B34E33;
+  --color-falu-tint: #F2E0D8;
+  --color-ochre: #C08A2A;
+  --color-ochre-tint: #F0E3CE;
+  --color-moss: #4E7A4A;
+  --color-moss-tint: #DDE9DA;
 }
 
 :root {
@@ -31,14 +31,14 @@
   --panel: #1B1E1C;
   --line: #DDE1DC;
 
-  --fjord: #2F5049;
-  --fjord-tint: #E1E9E4;
-  --falu: #9C4630;
-  --falu-tint: #F2E2DB;
-  --ochre: #A97A2E;
-  --ochre-tint: #F0E5D2;
-  --moss: #546E51;
-  --moss-tint: #E4EAE0;
+  --fjord: #2E6B5A;
+  --fjord-tint: #D8EBE5;
+  --falu: #B34E33;
+  --falu-tint: #F2E0D8;
+  --ochre: #C08A2A;
+  --ochre-tint: #F0E3CE;
+  --moss: #4E7A4A;
+  --moss-tint: #DDE9DA;
 
   /* Aliases */
   --color-paper: var(--paper);
@@ -67,14 +67,14 @@
   --panel: #0D1012;
   --line: #232B2E;
 
-  --fjord: #6FA89C;
-  --fjord-tint: #20302B;
-  --falu: #D9805F;
-  --falu-tint: #332420;
-  --ochre: #D9AC63;
-  --ochre-tint: #332A1B;
-  --moss: #8FB589;
-  --moss-tint: #212B1F;
+  --fjord: #5BB89E;
+  --fjord-tint: #1A2E28;
+  --falu: #E0724A;
+  --falu-tint: #2E1E18;
+  --ochre: #E0B452;
+  --ochre-tint: #2B2213;
+  --moss: #7EC276;
+  --moss-tint: #1C2A1A;
 
   --color-paper: var(--paper);
   --color-paper-warm: var(--paper-warm);

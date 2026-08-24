@@ -12,23 +12,26 @@
 .control-item,
 .text-link {
   transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Button & Link Hover Dynamics */
 .button:hover {
   transform: translateY(-2px);
 }
+
 .button:active {
   transform: translateY(0);
 }
+
 .button span[aria-hidden="true"] {
   display: inline-block;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .button:hover span[aria-hidden="true"] {
   transform: translate(2px, 2px);
 }
@@ -37,6 +40,7 @@
   display: inline-block;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .text-link:hover span[aria-hidden="true"] {
   transform: translateX(4px);
 }
@@ -45,9 +49,11 @@
 #theme-toggle svg {
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
 #theme-toggle:hover svg {
   transform: rotate(20deg) scale(1.1);
 }
+
 #theme-toggle:active svg {
   transform: rotate(90deg) scale(0.9);
 }
@@ -56,6 +62,7 @@
 .live-dot {
   position: relative;
 }
+
 .live-dot::after {
   content: "";
   position: absolute;
@@ -71,7 +78,9 @@
     transform: scale(0.9);
     opacity: 0.8;
   }
-  70%, 100% {
+
+  70%,
+  100% {
     transform: scale(2.4);
     opacity: 0;
   }
@@ -79,18 +88,24 @@
 
 /* Topographic Contour Organic Drift */
 @keyframes contour-drift-1 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) scale(1) rotate(0deg);
   }
+
   50% {
     transform: translate(-12px, 8px) scale(1.02) rotate(1deg);
   }
 }
 
 @keyframes contour-drift-2 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) scale(1) rotate(0deg);
   }
+
   50% {
     transform: translate(10px, -10px) scale(0.98) rotate(-1.5deg);
   }
@@ -110,10 +125,12 @@
 .workflow-card {
   transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .workflow-card:hover {
   background-color: var(--paper);
   transform: translateY(-2px);
 }
+
 .workflow-card:hover .workflow-output {
   border-top-style: solid;
   color: var(--fjord);
@@ -129,6 +146,7 @@
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -139,6 +157,7 @@
 .claim-box {
   transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .claim-box:hover {
   background-color: var(--paper-warm);
   transform: translateY(-1px);
@@ -150,6 +169,7 @@
     opacity: 0;
     transform: translateY(18px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -173,11 +193,12 @@
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
 }
 
 /* Accessibility: Strict Reduced-Motion Safety */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -186,6 +207,7 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+
   .hero-contour-svg,
   .hero-contour-svg path,
   .live-dot::after {
